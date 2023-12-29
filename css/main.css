@@ -601,10 +601,16 @@ blockquote.normal {
 	z-index: 9;
 	-webkit-transition: all .2s linear;
 	transition: all .2s linear;
+	
 }
 
 .logo .gray-logo {
+	
 	display: none;
+	padding: 0px 25px 0px 0;
+	
+	
+	
 }
 
 .logo:before {
