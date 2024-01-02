@@ -1384,7 +1384,7 @@ blockquote.normal {
 }
 
 #testimonial-home-page {
-	background-image: url('../img/generic/img-05.jpg');
+	background-image: url('../img/generic/11.jpg');
 }
 
 #banner-homeparallax-default {
@@ -12245,6 +12245,11 @@ h4,
 
 @media only screen and (max-width: 767px) {
 
+	#header {
+		position: fixed;
+		
+	}	
+	
 .header-top .visible-xs.cart-visible {
 	display: inline-block !important;
 }
