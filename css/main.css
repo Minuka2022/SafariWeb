@@ -12245,10 +12245,7 @@ h4,
 
 @media only screen and (max-width: 767px) {
 
-	#header {
-		position: fixed;
-		
-	}	
+	
 	
 .header-top .visible-xs.cart-visible {
 	display: inline-block !important;
