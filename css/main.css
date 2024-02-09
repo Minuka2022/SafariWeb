@@ -10324,7 +10324,7 @@ blockquote.normal {
 	margin: 0;
 	padding: 25px 15px 25px 0;
 	float: left;
-	border-right: 1px solid #2d2d2d;
+	border-right: 0px solid #2d2d2d;
 }
 
 .logo a {
@@ -10362,7 +10362,7 @@ blockquote.normal {
 
 .default-page #header.default-white-header,
 #header.default-white-header {
-	border-bottom: 1px solid #eaeaea;
+	border-bottom: 0px solid #eaeaea;
 }
 
 .default-page #header.default-white-header .navbar-default .navbar-nav .v-divider,
@@ -11593,7 +11593,7 @@ h4,
 .default-page #header.white-header.fixed-position,
 #header.white-header.fixed-position {
 	background: #f8f8f8;
-	border-bottom: 1px solid #e2e2e2;
+	border-bottom: 0px solid #e2e2e2;
 }
 
 .default-page #header.white-header.fixed-position .logo,
@@ -11628,7 +11628,7 @@ h4,
 
 .default-page #header.default-white-header.fixed-position,
 #header.default-white-header.fixed-position {
-	border-bottom: 1px solid #e2e2e2;
+	border-bottom: 0px solid #e2e2e2;
 }
 
 .default-page #header.default-white-header.fixed-position .logo,
