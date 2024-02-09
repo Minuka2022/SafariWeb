@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
-  
-<!-- Mirrored from html.waituk.com/entrada/tour-detail.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Sep 2023 16:24:24 GMT -->
-<head>
+  <!-- Mirrored from html.waituk.com/entrada/tour-detail.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Sep 2023 16:24:24 GMT -->
+  <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -64,10 +63,10 @@
           <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
           <script type="text/javascript">
             $(document).ready(function () {
-                $('#header').load("header.html");
-                $('#footer').load("footer.html");  
+              $("#header").load("header.html");
+              $("#footer").load("footer.html");
             });
-        </script>
+          </script>
         </header>
         <!-- main container -->
         <main id="main">
@@ -100,135 +99,109 @@
                 </div>
               </div>
               <div class="height col-md-6 text-col">
-                <div class="holder">
-                  <h1 class="small-size">Annapurna Circuit Trek</h1>
-                  <div class="price">from <strong>US $979</strong></div>
-                  <div class="description">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ctetur, adipisci velit, sed quia non
-                      numquam eius modi.
-                    </p>
+                <div class="holder" style="padding-bottom: 50px">
+                  <h1 style="text-align: center; font-size: xx-large">
+                    Annapurna Circuit Trek
+                  </h1>
+                  <div
+                    class="price"
+                    style="text-align: center; font-size: xx-large"
+                  >
+                    from <strong>US $979</strong>
                   </div>
-                  <ul class="reviews-info">
-                    <li>
-                      <div class="info-left">
-                        <strong class="title">Reviews</strong>
-                        <span class="value">75 Reviews</span>
-                      </div>
-                      <div class="info-right">
-                        <div class="star-rating">
-                          <span><span class="icon-star"></span></span>
-                          <span><span class="icon-star"></span></span>
-                          <span><span class="icon-star"></span></span>
-                          <span><span class="icon-star"></span></span>
-                          <span class="disable"
-                            ><span class="icon-star"></span
-                          ></span>
+
+                  <ul
+                    class="reviews-info"
+                    style="text-align: left; font-size: larger"
+                  >
+                    <!-- ... existing content ... -->
+                  </ul>
+
+                  <div class="btn-holder" style="text-align: left">
+                    <!-- Start of the form -->
+                    <form>
+                      <div class="form-group" style="font-size: larger">
+                        <label for="adventure">Select Your National Park</label>
+                        <div class="select-holder" >
+                          <select
+                            class="trip"
+                            id="adventure"
+                            style="height: 40px; width: 100%"
+                          >
+                            <option>Wilpattu national park</option>
+                            <option>Minneriya national park</option>
+                            <option>Kaudulla national park</option>
+                            <option>Eco park</option>
+                            <option>Yala national park</option>
+                            <option>Boating Sailing</option>
+                          </select>
                         </div>
-                        <span class="value">5/5</span>
                       </div>
-                    </li>
-                    <li>
-                      <div class="info-left">
-                        <strong class="title">Vacation Style</strong>
-                        <span class="value">Adult Group</span>
+
+                      <div class="form-group" style="font-size: larger">
+                        <label for="tourSelect">Select Tour Type:</label>
+                        <div class="select-holder">
+                          <select
+                            class="trip"
+                            id="adventure"
+                            style="height: 40px; width: 100%"
+                          >
+                            <option>Wilpattu national park</option>
+                            <option>Minneriya national park</option>
+                            <option>Kaudulla national park</option>
+                            <option>Eco park</option>
+                         
+                          </select>
+                        </div>
                       </div>
-                      <div class="info-right">
-                        <ul class="ico-list">
-                          <li>
-                            <span class="icon icon-hiking"></span>
-                          </li>
-                          <li>
-                            <span class="icon icon-mount"></span>
-                          </li>
-                          <li>
-                            <span class="icon icon-camping"></span>
-                          </li>
-                        </ul>
-                        <span class="value">Camping Trek</span>
+                      
+
+                      <div class="form-group" style="font-size: larger">
+                        <label for="dateInput">Choose Date:</label>
+                        <input
+                          type="date"
+                          class="form-control"
+                          id="dateInput"
+                        />
                       </div>
-                    </li>
-                    <li>
-                      <div class="info-left">
-                        <strong class="title">Activity Level</strong>
-                        <span class="value">Quite Tough</span>
+
+                      <div class="form-group" style="font-size: larger">
+                        <label for="adultsInput">Enter Adults Count:</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="adultsInput"
+                        />
                       </div>
-                      <div class="info-right">
-                        <ul class="ico-list">
-                          <li>
-                            <span class="icon icon-level3"></span>
-                          </li>
-                          <li>
-                            <span class="icon icon-level5"></span>
-                          </li>
-                          <li>
-                            <span class="icon icon-level7"></span>
-                          </li>
-                        </ul>
-                        <span class="value">9/10</span>
+
+                      <div class="form-group" style="font-size: larger">
+                        <label for="childrenInput">Enter Children Count:</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="childrenInput"
+                        />
                       </div>
-                    </li>
-                    <li>
-                      <div class="info-left">
-                        <strong class="title">Group Size</strong>
-                        <span class="value">Medium Grougs</span>
+
+                      <div class="form-group" style="font-size: larger">
+                        <label for="infantsInput">Enter Infants Count:</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="infantsInput"
+                        />
                       </div>
-                      <div class="info-right">
-                        <ul class="ico-list">
-                          <li>
-                            <span class="icon icon-group-small"></span>
-                          </li>
-                          <li>
-                            <span class="icon icon-group-medium"></span>
-                          </li>
-                          <li>
-                            <span class="icon icon-group-large"></span>
-                          </li>
-                        </ul>
-                        <span class="value">6/10</span>
+
+                      <!-- Removed Total Price section -->
+
+                      <div style="text-align: center ;  margin-top:90px;">
+                        <button type="submit" class="btn btn-lg btn-info">
+                          BOOK NOW
+                        </button>
                       </div>
-                    </li>
-                  </ul>
-                  <div class="btn-holder">
-                    <a href="#" class="btn btn-lg btn-info">BOOK NOW</a>
+                    </form>
+                    <!-- End of the form -->
                   </div>
-                  <ul class="social-networks social-share">
-                    <li>
-                      <a href="#" class="facebook">
-                        <span class="ico">
-                          <span class="icon-facebook"></span>
-                        </span>
-                        <span class="text">Share</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" class="twitter">
-                        <span class="ico">
-                          <span class="icon-twitter"></span>
-                        </span>
-                        <span class="text">Tweet</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" class="google">
-                        <span class="ico">
-                          <span class="icon-google-plus"></span>
-                        </span>
-                        <span class="text">+1</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" class="pin">
-                        <span class="ico">
-                          <span class="icon-pin"></span>
-                        </span>
-                        <span class="text">Pin it</span>
-                      </a>
-                    </li>
-                  </ul>
                 </div>
               </div>
             </div>
@@ -247,7 +220,7 @@
                       >Overview</a
                     >
                   </li>
-                 
+
                   <li role="presentation">
                     <a
                       href="#tab04"
@@ -1303,371 +1276,49 @@
               </div>
               <!-- dates and prices tab content -->
               <div role="tabpanel" class="tab-pane" id="tab06">
-                <div class="table-container">
-                  <div class="table-responsive">
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th>
-                            <strong class="date-text">Departure Dates</strong>
-                            <span class="sub-text">Confirmed Dates</span>
-                          </th>
-                          <th>
-                            <strong class="date-text">Trip Status</strong>
-                            <span class="sub-text">Trip Status</span>
-                          </th>
-                          <th>
-                            <strong class="date-text">Price (PP)</strong>
-                            <span class="sub-text">Including Flights</span>
-                          </th>
-                          <th>
-                            <strong class="date-text">Price (PP)</strong>
-                            <span class="sub-text">Excluding Flights</span>
-                          </th>
-                          <th>&nbsp;</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">
-                                Fri 18 Oct '16 - Sun 04 Nov '16
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">
-                                Available &amp; Guaranteed
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">$2,779</div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">$3,170</div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">
-                                <a href="#" class="btn btn-default">BOOK NOW</a>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">
-                                Fri 18 Oct '16 - Sun 04 Nov '16
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">Booked &amp; Guaranteed</div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">$2,679</div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">$3,970</div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">
-                                <a href="#" class="btn btn-default">BOOK NOW</a>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">
-                                Fri 18 Oct '16 - Sun 04 Nov '16
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">
-                                Available &amp; Guaranteed
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">$1,779</div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">$3,470</div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">
-                                <a href="#" class="btn btn-default">BOOK NOW</a>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">
-                                Fri 18 Oct '16 - Sun 04 Nov '16
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">Available</div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">$2,779</div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">$3,970</div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">
-                                <a href="#" class="btn btn-default">BOOK NOW</a>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">
-                                Fri 18 Oct '16 - Sun 04 Nov '16
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">Booked &amp; Guaranteed</div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">$3,779</div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">$4,970</div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">
-                                <a href="#" class="btn btn-default">BOOK NOW</a>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">
-                                Fri 18 Oct '16 - Sun 04 Nov '16
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">
-                                Available &amp; Guaranteed
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">$2,879</div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">$3,970</div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">
-                                <a href="#" class="btn btn-default">BOOK NOW</a>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">
-                                Fri 18 Oct '16 - Sun 04 Nov '16
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">
-                                Available &amp; Guaranteed
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">$2,679</div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">$1,970</div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">
-                                <a href="#" class="btn btn-default">BOOK NOW</a>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">
-                                Fri 18 Oct '16 - Sun 04 Nov '16
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">Booked &amp; Guaranteed</div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">$4,779</div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">$3,970</div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">
-                                <a href="#" class="btn btn-default">BOOK NOW</a>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">
-                                Fri 18 Oct '16 - Sun 04 Nov '16
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">
-                                Available &amp; Guaranteed
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">$5,779</div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">$3,270</div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">
-                                <a href="#" class="btn btn-default">BOOK NOW</a>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">
-                                Fri 18 Oct '16 - Sun 04 Nov '16
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">
-                                Available &amp; Guaranteed
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">$2,779</div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">$3,970</div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="cell">
-                              <div class="middle">
-                                <a href="#" class="btn btn-default">BOOK NOW</a>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="load-more text-center text-uppercase">
-                    <a href="#">MORE DATES &amp; PRICES</a>
-                  </div>
+                <div class="col-sm-12 demo-wrapper" style="padding: 10px">
+                  <h1 class="text-center" style="margin-bottom: 78px">
+                    National park price list - 2024
+                  </h1>
+                  <ul class="detail-accordion accordion-v2">
+                    <li class="active">
+                      <a href="#">
+                        <strong class="title">PAX 1</strong>
+                      </a>
+                      <div class="slide">
+                        <div class="slide-holder">
+                          <!-- Start of the table -->
+                          <table style="width: 100%; font-size: 1.2em">
+                            <thead>
+                              <tr>
+                                <th style="padding: 5px">Tour Type</th>
+                                <th style="padding: 5px">Price</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <!-- Add a row for each tour type and its price -->
+                              <tr>
+                                <td style="padding: 5px">Evening Safari</td>
+                                <td style="padding: 5px">$93.00</td>
+                              </tr>
+                              <!-- Add more rows as necessary -->
+                            </tbody>
+                          </table>
+                          <!-- End of the table -->
+                        </div>
+                      </div>
+                    </li>
+                    <!-- Add more list items for other PAX values -->
+                  </ul>
                 </div>
               </div>
             </div>
           </div>
           <!-- recent block -->
-        
         </main>
       </div>
       <!-- main footer -->
-      <footer id="footer">
-        
-      </footer>
+      <footer id="footer"></footer>
     </div>
     <!-- scroll to top -->
     <div class="scroll-holder text-center">
@@ -1702,5 +1353,5 @@
     <script src="js/jquery.main.js"></script>
   </body>
 
-<!-- Mirrored from html.waituk.com/entrada/tour-detail.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Sep 2023 16:24:33 GMT -->
+  <!-- Mirrored from html.waituk.com/entrada/tour-detail.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Sep 2023 16:24:33 GMT -->
 </html>
