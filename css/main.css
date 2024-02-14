@@ -1455,8 +1455,16 @@ blockquote.normal {
 	background-image: url('../img/banner/img-14.jpg');
 }
 
-#banner-layout-fullwidth {
-	background-image: url('../img/banner/img-14.jpg');
+#banner-layout-fullwidth-wilpattu {
+	background-image: url('../img/willpattu/wiilpattu.webp');
+}
+
+#banner-layout-fullwidth-yala {
+	background-image: url('../img/yala/tiger.jpg');
+}
+
+#banner-layout-fullwidth-all {
+	background-image: url('../img/kaudulla/elephants.jpg');
 }
 
 #banner-layout-leftsidebar {
@@ -11390,7 +11398,7 @@ table.table {
 }
 
 .inner-top {
-	padding: 60px 0;
+	padding: 120px 0 40px ; 
 }
 
 .inner-top .breadcrumbs {
