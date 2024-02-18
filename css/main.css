@@ -1462,6 +1462,26 @@ blockquote.normal {
 #banner-layout-fullwidth-yala {
 	background-image: url('../img/yala/tiger.jpg');
 }
+#banner-layout-fullwidth-hurulu {
+	background-image: url('../img/bundala/parrot.jpg');
+}
+#banner-layout-fullwidth-udawalawa {
+	background-image: url('../img/bundala/parrot.jpg');
+}
+
+#banner-layout-fullwidth-kaudulla {
+	background-image: url('../img/kaudulla/elephants.jpg');
+}
+
+#banner-layout-fullwidth-minneriya {
+	background-image: url('../img/kaudulla/elephants.jpg');
+}
+#banner-layout-fullwidth-kumana {
+	background-image: url('../img/kumana/bunchofdea.jpg');
+}
+#banner-layout-fullwidth-bundala {
+	background-image: url('../img/bundala/eagle.jpg');
+}
 
 #banner-layout-fullwidth-all {
 	background-image: url('../img/kaudulla/elephants.jpg');

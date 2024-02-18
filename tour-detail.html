@@ -58,16 +58,14 @@
     <!-- main wrapper -->
     <div id="wrapper">
       <div class="page-wrapper">
-        <!-- main header -->
-        <header id="header">
-          <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-          <script type="text/javascript">
-            $(document).ready(function () {
-              $("#header").load("header.html");
-              $("#footer").load("footer.html");
-            });
-          </script>
-        </header>
+        <header id="header"></header>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script>
+          $(document).ready(function () {
+            $("#header").load("navbar.html");
+            $("#footer").load("footer.html");
+          });
+        </script>
         <!-- main container -->
         <main id="main">
           <!-- main tour information -->
