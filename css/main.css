@@ -2519,10 +2519,7 @@ a.thumbnail img {
 	margin-left: -25px;
 }
 
-.gallery-list.has-center a:after {
-	background: rgba(255, 255, 255, .9);
-	opacity: 0;
-}
+
 
 .gallery-list.has-center a:hover:after,
 .gallery-list.has-center a:hover .caption:before,
@@ -2592,7 +2589,7 @@ a.thumbnail img {
 	right: -1px;
 	top: 0;
 	bottom: 0;
-	background: rgba(71, 77, 75, .92);
+	/* background: rgba(71, 77, 75, .92); */
 	opacity: 0;
 	-webkit-transition: opacity .2s linear;
 	transition: opacity .2s linear;
