@@ -175,7 +175,8 @@
                                           data.forEach(tour => {
                                               const option = document.createElement('option');
                                               option.value = tour.id;
-                                              option.textContent = tour.tour_time;
+                                              option.textContent = tour.tour_time + ', ' + tour.tour_name;
+
                                               tourSelect.appendChild(option);
                                           });
                                       })
@@ -1338,8 +1339,45 @@
                             <tbody>
                               <!-- Add a row for each tour type and its price -->
                               <tr>
-                                <td style="padding: 5px">Evening Safari</td>
-                                <td style="padding: 5px">$93.00</td>
+                                <td style="padding: 5px" class="tourName"></td>
+                                <td style="padding: 5px" class="tourPrice"></td>
+                              </tr>
+                               
+                              <!-- Add more rows as necessary -->
+                            </tbody>
+                          </table>
+                          <!-- End of the table -->
+                        </div>
+                      </div>
+                    </li>
+                    
+                    <!-- Add more list items for other PAX values -->
+                  </ul>
+                </div>
+
+
+                <div class="col-sm-12 demo-wrapper" style="padding: 10px">
+                 
+                  <ul class="detail-accordion accordion-v2">
+                    <li class="active">
+                      <a href="#">
+                        <strong class="title">PAX 2</strong>
+                      </a>
+                      <div class="slide">
+                        <div class="slide-holder">
+                          <!-- Start of the table -->
+                          <table style="width: 100%; font-size: 1.2em">
+                            <thead>
+                              <tr>
+                                <th style="padding: 5px">Tour Type</th>
+                                <th style="padding: 5px">Price</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <!-- Add a row for each tour type and its price -->
+                              <tr>
+                                <td style="padding: 5px" class="tourName"></td>
+                                <td style="padding: 5px" class="tourPrice1"></td>
                               </tr>
                               <!-- Add more rows as necessary -->
                             </tbody>
@@ -1348,15 +1386,194 @@
                         </div>
                       </div>
                     </li>
+                   </div>
+
+                <div class="col-sm-12 demo-wrapper" style="padding: 10px">
+                 
+                 <ul class="detail-accordion accordion-v2">
+                   <li class="active">
+                     <a href="#">
+                       <strong class="title">PAX 3</strong>
+                     </a>
+                     <div class="slide">
+                       <div class="slide-holder">
+                         <!-- Start of the table -->
+                         <table style="width: 100%; font-size: 1.2em">
+                           <thead>
+                             <tr>
+                               <th style="padding: 5px">Tour Type</th>
+                               <th style="padding: 5px">Price</th>
+                             </tr>
+                           </thead>
+                           <tbody>
+                             <!-- Add a row for each tour type and its price -->
+                             <tr>
+                               <td style="padding: 5px" class="tourName"></td>
+                               <td style="padding: 5px" class="tourPrice2"></td>
+                             </tr>
+                             <!-- Add more rows as necessary -->
+                           </tbody>
+                         </table>
+                         <!-- End of the table -->
+                       </div>
+                     </div>
+                   </li>
+                   </div>
+                  
+                <div class="col-sm-12 demo-wrapper" style="padding: 10px">
+                 
+                 <ul class="detail-accordion accordion-v2">
+                   <li class="active">
+                     <a href="#">
+                       <strong class="title">PAX 4</strong>
+                     </a>
+                     <div class="slide">
+                       <div class="slide-holder">
+                         <!-- Start of the table -->
+                         <table style="width: 100%; font-size: 1.2em">
+                           <thead>
+                             <tr>
+                               <th style="padding: 5px">Tour Type</th>
+                               <th style="padding: 5px">Price</th>
+                             </tr>
+                           </thead>
+                           <tbody>
+                             <!-- Add a row for each tour type and its price -->
+                             <tr>
+                               <td style="padding: 5px" class="tourName"></td>
+                               <td style="padding: 5px" class="tourPrice3"></td>
+                             </tr>
+                             <!-- Add more rows as necessary -->
+                           </tbody>
+                         </table>
+                         <!-- End of the table -->
+                       </div>
+                     </div>
+                   </li>
+                   </div>
+                  
+                <div class="col-sm-12 demo-wrapper" style="padding: 10px">
+                 
+                 <ul class="detail-accordion accordion-v2">
+                   <li class="active">
+                     <a href="#">
+                       <strong class="title">PAX 5</strong>
+                     </a>
+                     <div class="slide">
+                       <div class="slide-holder">
+                         <!-- Start of the table -->
+                         <table style="width: 100%; font-size: 1.2em">
+                           <thead>
+                             <tr>
+                               <th style="padding: 5px">Tour Type</th>
+                               <th style="padding: 5px">Price</th>
+                             </tr>
+                           </thead>
+                           <tbody>
+                             <!-- Add a row for each tour type and its price -->
+                             <tr>
+                               <td style="padding: 5px" class="tourName"></td>
+                               <td style="padding: 5px" class="tourPrice4"></td>
+                             </tr>
+                             <!-- Add more rows as necessary -->
+                           </tbody>
+                         </table>
+                         <!-- End of the table -->
+                       </div>
+                     </div>
+                   </li>
+                   </div>
+                  
+                 <div class="col-sm-12 demo-wrapper" style="padding: 10px">
+                 
+                 <ul class="detail-accordion accordion-v2">
+                   <li class="active">
+                     <a href="#">
+                       <strong class="title">PAX 6</strong>
+                     </a>
+                     <div class="slide">
+                       <div class="slide-holder">
+                         <!-- Start of the table -->
+                         <table style="width: 100%; font-size: 1.2em">
+                           <thead>
+                             <tr>
+                               <th style="padding: 5px">Tour Type</th>
+                               <th style="padding: 5px">Price</th>
+                             </tr>
+                           </thead>
+                           <tbody>
+                             <!-- Add a row for each tour type and its price -->
+                             <tr>
+                               <td style="padding: 5px" class="tourName"></td>
+                               <td style="padding: 5px" class="tourPrice5"></td>
+                             </tr>
+                             <!-- Add more rows as necessary -->
+                           </tbody>
+                         </table>
+                         <!-- End of the table -->
+                       </div>
+                     </div>
+                   </li>
+                   </div>
+                    
                     <!-- Add more list items for other PAX values -->
                   </ul>
                 </div>
+
+
               </div>
             </div>
           </div>
           <!-- recent block -->
         </main>
       </div>
+      <script>
+
+
+
+    // Event listener for tour select change
+    document.getElementById('tourSelect').addEventListener('change', function() {
+    const tourId = this.value;
+    if (tourId) {
+        // Fetch tour details based on the selected tour ID
+        fetch('fetch_tour_details.php?tour_id=' + tourId)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data); // Log received data to the console
+            // Update the table with tour details
+            const tourNameCells = document.querySelectorAll('.tourName');
+            const tourPriceCells = document.querySelectorAll('.tourPrice');
+            const tourPriceCell1 = document.querySelectorAll('.tourPrice1')[0]; // Access the first element from the NodeList
+            const tourPriceCell2 = document.querySelectorAll('.tourPrice2')[0]; // Access the first element from the NodeList
+            const tourPriceCell3 = document.querySelectorAll('.tourPrice3')[0]; // Access the first element from the NodeList
+            const tourPriceCell4 = document.querySelectorAll('.tourPrice4')[0]; // Access the first element from the NodeList
+            const tourPriceCell5 = document.querySelectorAll('.tourPrice5')[0]; // Access the first element from the NodeList
+
+            console.log(tourNameCells.length, tourPriceCells.length); // Log cell count to check if cells are correctly selected
+
+            tourPriceCell1.textContent = data.tour_price1;
+            tourPriceCell2.textContent = data.tour_price2;
+            tourPriceCell3.textContent = data.tour_price3;
+            tourPriceCell4.textContent = data.tour_price4;
+            tourPriceCell5.textContent = data.tour_price5;
+
+            tourNameCells.forEach(cell => {
+                cell.textContent = data.tour_name;
+            });
+            tourPriceCells.forEach(cell => {
+                cell.textContent = data.tour_price;
+            });
+        })
+        .catch(error => console.error('Error fetching tour details:', error));
+    }
+});
+
+
+
+
+
+
+      </script>
       <!-- main footer -->
       <footer id="footer"></footer>
     </div>
