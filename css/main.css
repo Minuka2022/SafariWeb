@@ -1462,6 +1462,13 @@ blockquote.normal {
 #banner-layout-fullwidth-yala {
 	background-image: url('../img/yala/tiger.jpg');
 }
+
+#banner-layout-fullwidth-whalewatching {
+	background-image: url('../safari1/whalewatching.webp');
+}
+#banner-layout-fullwidth-Hotairbaloon {
+	background-image: url('../safari1/hotairballoon.webp');
+}
 #banner-layout-fullwidth-hurulu {
 	background-image: url('../img/bundala/parrot.jpg');
 }
@@ -12581,3 +12588,32 @@ to {
 
 }
 
+.home-section {
+    background-color: #ebf1fa;
+    height: auto;
+    padding-bottom: 40px;
+    margin: auto;
+}
+
+.home-section .container .row .col-md-5 h2 {
+    font-size: 45px;
+    margin-top: 80px;
+    text-align: center;
+}
+
+.myform .form-group label {
+    display: block;
+}
+
+.myform .form-group select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.myform .form-group .btn-success {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+}
