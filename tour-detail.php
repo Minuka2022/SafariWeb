@@ -175,7 +175,7 @@
                                           data.forEach(tour => {
                                               const option = document.createElement('option');
                                               option.value = tour.id;
-                                              option.textContent = tour.tour_time + ', ' + tour.tour_name;
+                                              option.textContent =  tour.tour_name;
 
                                               tourSelect.appendChild(option);
                                           });
@@ -345,7 +345,7 @@
                       aria-controls="tab06"
                       role="tab"
                       data-toggle="tab"
-                      >Willpattu Price list</a
+                      >Price list</a
                     >
                   </li>
                 </ul>
@@ -363,15 +363,10 @@
                     >
                     <div class="detail">
                       <p>
-                        This is Photoshop's version of Lorem Ipsum. Proin
-                        gravida nibh vel velit auctor aliquet. Aenean
-                        sollicitudin, lorem quis bibendum auctor, nisi elit
-                        consequat ipsum, nec sagittis sem nibh id elit.
+                       fuasiuf as ifasiyfasifheasvbd
                       </p>
                       <p>
-                        Duis sed odio sit amet nibh vulputate cursus a sit amet
-                        mauris. Morbi accumsan ipsum velit. Nam nec tellus a
-                        odio tincidunt auctor a ornare odio.
+                        asjfhjasfhjasfjhasf
                       </p>
                       <p>
                         Sed non mauris vitae erat consequat auctor eu in elit.
@@ -1402,7 +1397,7 @@
                       </div>
                     </li>
                    </div>
-
+                  
                 <div class="col-sm-12 demo-wrapper" style="padding: 10px">
                  
                  <ul class="detail-accordion accordion-v2">
@@ -1497,7 +1492,7 @@
                        </div>
                      </div>
                    </li>
-                   </div>
+                </div>
                   
                  <div class="col-sm-12 demo-wrapper" style="padding: 10px">
                  
@@ -1542,6 +1537,7 @@
           <!-- recent block -->
         </main>
       </div>
+      
       <script>
 
 
