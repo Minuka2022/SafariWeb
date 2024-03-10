@@ -231,7 +231,7 @@
 
 
                           </script>
-                                            <div class="form-group" style="font-size: larger">
+                        <div class="form-group" style="font-size: larger">
                             <label for="tourSelect">Select Tour time :</label>
                             <div class="select-holder">
                                 <select class="trip" id="tourSelect" style="height: 40px; width: 100%">
@@ -240,6 +240,22 @@
                                 </select>
                             </div>
                         </div>
+
+                           <div class="form-group" style="font-size: larger">
+                            <label for="tourSelect">Activties</label>
+                            <div class="select-holder">
+                                <select class="trip"  style="height: 40px; width: 100%">
+                                    <!-- Options will be dynamically added here -->
+                                    <option value="">--select--</option>
+
+                                    <option value="">Sigiriya hot air balloon</option>
+
+                                    <option value="">Whale and dolphin watching</option>
+                                    <option value="">Sigiriya village tour</option>
+                                </select>
+                            </div>
+                        </div>
+
 
 
                       <div class="form-group" style="font-size: larger">
@@ -269,14 +285,12 @@
                         />
                       </div>
 
-                      <div class="form-group" style="font-size: larger">
-                        <label for="infantsInput">Enter Infants Count:</label>
-                        <input
-                          type="number"
-                          class="form-control"
-                          id="infantsInput"
-                        />
-                      </div>
+          <div class="form-group" style="font-size: larger">
+    <label for="notesInput">Notes</label>
+    <textarea class="form-control" id="notesInput" style="height: 200px; resize: none;"></textarea>
+</div>
+
+
 
                       <!-- Removed Total Price section -->
 
@@ -337,6 +351,7 @@
                 </ul>
               </div>
             </nav>
+            
             <!-- tab panes -->
             <div class="container tab-content trip-detail">
               <!-- overview tab content -->
