@@ -269,7 +269,7 @@
                       </div>
                           
                       <div class="form-group" style="font-size: larger">
-                                  <label for="adultsInput">Enter Adults Count:</label>
+                      <label for="adultsInput">Enter Adults Count:</label>
                                   <input
                                     type="number"
                                     class="form-control"
