@@ -268,7 +268,8 @@
                       </div>
 
                       <div class="form-group" style="font-size: larger">
-                        <label for="adultsInput">Enter Adults Count:</label>
+                        <label for="adultsInput">Enter Adults Count:   </label>
+                        <p style="font-size:13px;">If the group includes more than 6 people (both adults and children), please first make a booking for the initial 6 individuals. For any additional people, leave a note indicating the remaining number of individuals and contact us for further assistance</p>
                         <input
                           type="number"
                           class="form-control"
