@@ -98,8 +98,8 @@
               </div>
               <div class="height col-md-6 text-col">
                 <div class="holder" style="padding-bottom: 50px">
-                  <h1 style="text-align: center; font-size: xx-large">
-                    Annapurna Circuit Trek
+                  <h1 style="text-align: center; font-size: xx-large" id="nametag">
+                   
                   </h1>
                   <div
                     class="price"
@@ -133,31 +133,34 @@
                     <script>
                     
                     document.addEventListener('DOMContentLoaded', function() {
-                              // Fetch parks data when the page loads
-                              fetch('fetch_parks.php')
+                          // Fetch parks data when the page loads
+                          fetch('fetch_parks.php')
                               .then(response => response.json())
                               .then(data => {
-                                
-
+                                  const nametag = document.getElementById('nametag');
                                   const parkSelect = document.getElementById('parkSelect');
 
-                                  
                                   // Populate park select dropdown with fetched data
                                   data.forEach(park => {
                                       const option = document.createElement('option');
                                       option.value = park.id;
                                       option.textContent = park.park_name;
                                       parkSelect.appendChild(option);
-
-                                      
-                                      
                                   });
-                                
+
                                   // Trigger change event on park select to automatically select default tour
                                   parkSelect.dispatchEvent(new Event('change'));
-                                  
                               })
                               .catch(error => console.error('Error fetching parks:', error));
+
+                          // Add event listener for change event on park select
+                          document.getElementById('parkSelect').addEventListener('change', function() {
+                              // Get the selected park name and display it in the nametag element
+                              const selectedParkName = this.options[this.selectedIndex].textContent;
+                              const nametag = document.getElementById('nametag');
+                              nametag.textContent = selectedParkName;
+                          });
+                      });
 
                               // Event listener for park select change
                               document.getElementById('parkSelect').addEventListener('change', function() {
@@ -170,7 +173,7 @@
                                       .then(data => {
                                           const tourSelect = document.getElementById('tourSelect');
                                           // Clear existing options
-                                          tourSelect.innerHTML = '<option value="">--select--</option>';
+                                          tourSelect.innerHTML = '<option value="">--Select The Park--</option>';
                                           // Populate tour select dropdown with fetched data
                                           data.forEach(tour => {
                                               const option = document.createElement('option');
@@ -183,7 +186,7 @@
                                       .catch(error => console.error('Error fetching tours:', error));
                                   }
                               });
-                          });
+                          
 
                           document.addEventListener('DOMContentLoaded', function() {
     // Event listener for park select change
@@ -256,8 +259,6 @@
                             </div>
                         </div>
 
-
-
                       <div class="form-group" style="font-size: larger">
                         <label for="dateInput">Choose Date:</label>
                         <input
@@ -266,24 +267,62 @@
                           id="dateInput"
                         />
                       </div>
-
+                          
                       <div class="form-group" style="font-size: larger">
-                        <label for="adultsInput">Enter Adults Count:</label>
-                        <input
-                          type="number"
-                          class="form-control"
-                          id="adultsInput"
-                        />
-                      </div>
+                                  <label for="adultsInput">Enter Adults Count:</label>
+                                  <input
+                                    type="number"
+                                    class="form-control"
+                                    id="adultsInput"
+                                    min="0" max="6"
+                                    maxlength="1"
+                                    oninput="limitTotal(this)"
+                                    onload="limitTotal(this)"
+                                  />
+                                </div>
 
-                      <div class="form-group" style="font-size: larger">
-                        <label for="childrenInput">Enter Children Count:</label>
-                        <input
-                          type="number"
-                          class="form-control"
-                          id="childrenInput"
-                        />
-                      </div>
+                                <div class="form-group" style="font-size: larger">
+                                  <label for="childrenInput">Enter Children Count:</label>
+                                  <input
+                                    type="number"
+                                    class="form-control"
+                                    id="childrenInput"
+                                    min="0" max="6"
+                                    oninput="limitTotal(this)"
+                                    onload="limitTotal(this)"
+                                  />
+                                </div>
+                                <script>
+                                  window.onload = function() {
+                                    resetValues();
+                                  };
+
+                                  function resetValues() {
+                                    document.getElementById('adultsInput').value = 0;
+                                    document.getElementById('childrenInput').value = 0;
+                                  }
+
+                                  function limitTotal(input) {
+                                    var value = parseInt(input.value);
+                                    if (value < parseInt(input.min)) {
+                                      input.value = input.min;
+                                    } else if (value > parseInt(input.max)) {
+                                      input.value = input.max;
+                                    }
+                                    
+                                    var adultsCount = parseInt(document.getElementById('adultsInput').value);
+                                    var childrenCount = parseInt(document.getElementById('childrenInput').value);
+                                    
+                                    // Dynamically adjust maximum limit for adults input
+                                    var adultsMax = 6 - childrenCount;
+                                    document.getElementById('adultsInput').max = adultsMax;
+                                    
+                                    // Dynamically adjust maximum limit for children input
+                                    var childrenMax = 6 - adultsCount;
+                                    document.getElementById('childrenInput').max = childrenMax;
+                                  }
+                                  </script>
+
 
           <div class="form-group" style="font-size: larger">
     <label for="notesInput">Notes</label>
@@ -361,50 +400,9 @@
                     <strong class="header-box"
                       >All about the classic Annapurna Circuit Trekking</strong
                     >
-                    <div class="detail">
-                      <p>
-                       fuasiuf as ifasiyfasifheasvbd
-                      </p>
-                      <p>
-                        asjfhjasfhjasfjhasf
-                      </p>
-                      <p>
-                        Sed non mauris vitae erat consequat auctor eu in elit.
-                        Class aptent taciti sociosqu ad litora torquent per
-                        conubia nostra, per inceptos himenaeos. Mauris in erat
-                        justo.
-                      </p>
-                      <p>
-                        Nullam ac urna eu felis dapibus condimentum sit amet a
-                        augue. Sed non neque elit. Sed ut imperdiet nisi.
-                      </p>
-                      <p>
-                        Proin condimentum fermentum nunc. Etiam pharetra, erat
-                        sed fermentum feugiat, velit mauris egestas quam.
-                      </p>
-                      <p>
-                        Ulins aliquam massa nisl quis neque. Proin condimentum
-                        fermentum nunc. Etiam pharetra, erat sed fermentum
-                        feugiat, velit mauris egestas quam, ut aliquam massa
-                        nisl quis neque.
-                      </p>
-                      <p>
-                        Proin condimentum fermentum nunc. Etiam pharetra, erat
-                        sed fermentum feugiat, velit mauris egestas quam.
-                      </p>
-                      <p>
-                        Ulins aliquam massa nisl quis neque. Proin condimentum
-                        fermentum nunc. Etiam pharetra, erat sed fermentum
-                        feugiat, velit mauris egestas quam, ut aliquam massa
-                        nisl quis neque.
-                      </p>
-                      <p>
-                        Ulins aliquam massa nisl quis neque. Proin condimentum
-                        fermentum nunc. Etiam pharetra, erat sed fermentum
-                        feugiat, velit mauris egestas quam, ut aliquam massa
-                        nisl quis neque.
-                      </p>
-                      <p>Suspendisse gin orci enim.</p>
+                    <div class="detail " id="tour_details">
+                     
+                     
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -421,27 +419,9 @@
                           >Items that are covered in the cost of tour
                           price.</span
                         >
-                        <p>
-                          This is Photoshop's version of Lorem Ipsum. Proin
-                          gravida nibh vel velit auctor aliquet. Aenean
-                          sollicitudin, lorem quis bibendum auctor, nisi elit
-                          consequat ipsum, nec sagittis sem nibh id elit.
-                        </p>
-                        <ul class="content-list tick-list">
-                          <li>
-                            All breakfasts, lunches and dinners &amp; dining
-                          </li>
-                          <li>
-                            All accommodation including tea houses en route
-                          </li>
-                          <li>
-                            All transportation including taxis and coaches
-                          </li>
-                          <li>
-                            Flights from Heathrow if booked inc. of flight
-                          </li>
-                          <li>Tour and trekking guide for entire journey</li>
-                        </ul>
+                       <div class="tinclude" id="tinclude">
+                         
+                        </div>
                       </div>
                     </div>
                     <div class="text-box not-included">
@@ -1559,14 +1539,30 @@
             const tourPriceCell3 = document.querySelectorAll('.tourPrice3')[0]; // Access the first element from the NodeList
             const tourPriceCell4 = document.querySelectorAll('.tourPrice4')[0]; // Access the first element from the NodeList
             const tourPriceCell5 = document.querySelectorAll('.tourPrice5')[0]; // Access the first element from the NodeList
+            const tour_details = document.getElementById('tour_details');
+            const tinclude = document.getElementById('tinclude');
 
-            console.log(tourNameCells.length, tourPriceCells.length); // Log cell count to check if cells are correctly selected
+            console.log(tinclude.length,tour_details.length); // Log cell count to check if cells are correctly selected
 
+            function decodeHtml(html) {
+                  var txt = document.createElement("textarea");
+                  txt.innerHTML = html;
+                  return txt.value;
+              }
+              function decodeHtml1(html) {
+                  var txt = document.createElement("textarea");
+                  txt.innerHTML = html;
+                  return txt.value;
+              }
+              const decodedHtml = decodeHtml(data.tour_details);
+              const decodedHtml1 = decodeHtml1(data.include);
             tourPriceCell1.textContent = data.tour_price1;
             tourPriceCell2.textContent = data.tour_price2;
             tourPriceCell3.textContent = data.tour_price3;
             tourPriceCell4.textContent = data.tour_price4;
             tourPriceCell5.textContent = data.tour_price5;
+            tour_details.innerHTML = decodedHtml;
+            tinclude.innerHTML = decodedHtml1;
 
             tourNameCells.forEach(cell => {
                 cell.textContent = data.tour_name;
