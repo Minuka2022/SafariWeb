@@ -1328,11 +1328,10 @@
                             </thead>
                             <tbody>
                               <!-- Add a row for each tour type and its price -->
-                              <tr>
+                             <tr>
                                 <td style="padding: 5px" class="tourName"></td>
                                 <td style="padding: 5px" class="tourPrice"></td>
                               </tr>
-                               
                               <!-- Add more rows as necessary -->
                             </tbody>
                           </table>
@@ -1340,14 +1339,11 @@
                         </div>
                       </div>
                     </li>
-                    
                     <!-- Add more list items for other PAX values -->
+                    
                   </ul>
-                </div>
 
 
-                <div class="col-sm-12 demo-wrapper" style="padding: 10px">
-                 
                   <ul class="detail-accordion accordion-v2">
                     <li class="active">
                       <a href="#">
@@ -1376,145 +1372,149 @@
                         </div>
                       </div>
                     </li>
-                     </ul>
-                   </div>
-                  
-                <div class="col-sm-12 demo-wrapper" style="padding: 10px">
-                 
-                 <ul class="detail-accordion accordion-v2">
-                   <li class="active">
-                     <a href="#">
-                       <strong class="title">PAX 3</strong>
-                     </a>
-                     <div class="slide">
-                       <div class="slide-holder">
-                         <!-- Start of the table -->
-                         <table style="width: 100%; font-size: 1.2em">
-                           <thead>
-                             <tr>
-                               <th style="padding: 5px">Tour Type</th>
-                               <th style="padding: 5px">Price</th>
-                             </tr>
-                           </thead>
-                           <tbody>
-                             <!-- Add a row for each tour type and its price -->
-                             <tr>
+                    <!-- Add more list items for other PAX values -->
+                  </ul>
+
+
+
+
+
+                  <ul class="detail-accordion accordion-v2">
+                    <li class="active">
+                      <a href="#">
+                        <strong class="title">PAX 3</strong>
+                      </a>
+                      <div class="slide">
+                        <div class="slide-holder">
+                          <!-- Start of the table -->
+                          <table style="width: 100%; font-size: 1.2em">
+                            <thead>
+                              <tr>
+                                <th style="padding: 5px">Tour Type</th>
+                                <th style="padding: 5px">Price</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <!-- Add a row for each tour type and its price -->
+                              <tr>
                                <td style="padding: 5px" class="tourName"></td>
                                <td style="padding: 5px" class="tourPrice2"></td>
                              </tr>
-                             <!-- Add more rows as necessary -->
-                           </tbody>
-                         </table>
-                         <!-- End of the table -->
-                       </div>
-                     </div>
-                   </li>
-                    </ul>
-                   </div>
-                  
-                <div class="col-sm-12 demo-wrapper" style="padding: 10px">
-                 
-                 <ul class="detail-accordion accordion-v2">
-                   <li class="active">
-                     <a href="#">
-                       <strong class="title">PAX 4</strong>
-                     </a>
-                     <div class="slide">
-                       <div class="slide-holder">
-                         <!-- Start of the table -->
-                         <table style="width: 100%; font-size: 1.2em">
-                           <thead>
-                             <tr>
-                               <th style="padding: 5px">Tour Type</th>
-                               <th style="padding: 5px">Price</th>
-                             </tr>
-                           </thead>
-                           <tbody>
-                             <!-- Add a row for each tour type and its price -->
-                             <tr>
+                              <!-- Add more rows as necessary -->
+                            </tbody>
+                          </table>
+                          <!-- End of the table -->
+                        </div>
+                      </div>
+                    </li>
+                    <!-- Add more list items for other PAX values -->
+                  </ul>
+
+
+
+                  <ul class="detail-accordion accordion-v2">
+                    <li class="active">
+                      <a href="#">
+                        <strong class="title">PAX 4</strong>
+                      </a>
+                      <div class="slide">
+                        <div class="slide-holder">
+                          <!-- Start of the table -->
+                          <table style="width: 100%; font-size: 1.2em">
+                            <thead>
+                              <tr>
+                                <th style="padding: 5px">Tour Type</th>
+                                <th style="padding: 5px">Price</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <!-- Add a row for each tour type and its price -->
+                                <tr>
                                <td style="padding: 5px" class="tourName"></td>
                                <td style="padding: 5px" class="tourPrice3"></td>
                              </tr>
-                             <!-- Add more rows as necessary -->
-                           </tbody>
-                         </table>
-                         <!-- End of the table -->
-                       </div>
-                     </div>
-                   </li>
-                    </ul>
-              </div>
-                  
-             <div class="col-sm-12 demo-wrapper" style="padding: 10px">
-                 
-                 <ul class="detail-accordion accordion-v2">
-                   <li class="active">
-                     <a href="#">
-                       <strong class="title">PAX 5</strong>
-                     </a>
-                     <div class="slide">
-                       <div class="slide-holder">
-                         <!-- Start of the table -->
-                         <table style="width: 100%; font-size: 1.2em">
-                           <thead>
-                             <tr>
-                               <th style="padding: 5px">Tour Type</th>
-                               <th style="padding: 5px">Price</th>
-                             </tr>
-                           </thead>
-                           <tbody>
-                             <!-- Add a row for each tour type and its price -->
-                             <tr>
+                              <!-- Add more rows as necessary -->
+                            </tbody>
+                          </table>
+                          <!-- End of the table -->
+                        </div>
+                      </div>
+                    </li>
+                    <!-- Add more list items for other PAX values -->
+                  </ul>
+
+
+                  <ul class="detail-accordion accordion-v2">
+                    <li class="active">
+                      <a href="#">
+                        <strong class="title">PAX 5</strong>
+                      </a>
+                      <div class="slide">
+                        <div class="slide-holder">
+                          <!-- Start of the table -->
+                          <table style="width: 100%; font-size: 1.2em">
+                            <thead>
+                              <tr>
+                                <th style="padding: 5px">Tour Type</th>
+                                <th style="padding: 5px">Price</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <!-- Add a row for each tour type and its price -->
+                               <tr>
                                <td style="padding: 5px" class="tourName"></td>
                                <td style="padding: 5px" class="tourPrice4"></td>
                              </tr>
-                             <!-- Add more rows as necessary -->
-                           </tbody>
-                         </table>
-                         <!-- End of the table -->
-                       </div>
-                     </div>
-                   </li>
- </ul>
-                </div>
-                  
-                 <div class="col-sm-12 demo-wrapper" style="padding: 10px"> 
-                 <ul class="detail-accordion accordion-v2">
-                   <li class="active">
-                     <a href="#">
-                       <strong class="title">PAX 6</strong>
-                     </a>
-                     <div class="slide">
-                       <div class="slide-holder">
-                         <!-- Start of the table -->
-                         <table style="width: 100%; font-size: 1.2em">
-                           <thead>
-                             <tr>
-                               <th style="padding: 5px">Tour Type</th>
-                               <th style="padding: 5px">Price</th>
-                             </tr>
-                           </thead>
-                           <tbody>
-                             <!-- Add a row for each tour type and its price -->
-                             <tr>
+                              <!-- Add more rows as necessary -->
+                            </tbody>
+                          </table>
+                          <!-- End of the table -->
+                        </div>
+                      </div>
+                    </li>
+                    <!-- Add more list items for other PAX values -->
+                  </ul>
+
+
+
+                  <ul class="detail-accordion accordion-v2">
+                    <li class="active">
+                      <a href="#">
+                        <strong class="title">PAX 6</strong>
+                      </a>
+                      <div class="slide">
+                        <div class="slide-holder">
+                          <!-- Start of the table -->
+                          <table style="width: 100%; font-size: 1.2em">
+                            <thead>
+                              <tr>
+                                <th style="padding: 5px">Tour Type</th>
+                                <th style="padding: 5px">Price</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <!-- Add a row for each tour type and its price -->
+                                <tr>
                                <td style="padding: 5px" class="tourName"></td>
                                <td style="padding: 5px" class="tourPrice5"></td>
                              </tr>
-                             <!-- Add more rows as necessary -->
-                           </tbody>
-                         </table>
-                         <!-- End of the table -->
-                       </div>
-                     </div>
-                   </li>
-                    </ul>
-                </div>
+                              <!-- Add more rows as necessary -->
+                            </tbody>
+                          </table>
+                          <!-- End of the table -->
+                        </div>
+                      </div>
+                    </li>
                     <!-- Add more list items for other PAX values -->
                   </ul>
+
+
+
+
                 </div>
+
+                
               </div>
-            </div>
-          </div>
           <!-- recent block -->
         </main>
       </div>
