@@ -131,47 +131,107 @@
                         </div>
                       </div>
                     <script>
-                    
-                    document.addEventListener('DOMContentLoaded', function() {
-                          // Fetch parks data when the page loads
-                          fetch('fetch_parks.php')
-                              .then(response => response.json())
-                              .then(data => {
-                                  const nametag = document.getElementById('nametag');
-                                  const parkSelect = document.getElementById('parkSelect');
+                                        document.addEventListener('DOMContentLoaded', function() {
+                                            // Fetch parks data when the page loads
+                                            fetch('fetch_parks.php')
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    parksData = data; // Assign fetched data to parksData variable
+                                                    console.log(parksData);
+                                                    const nametag = document.getElementById('nametag');
+                                                    const parkSelect = document.getElementById('parkSelect');
 
-                                  // Populate park select dropdown with fetched data
-                                  data.forEach(park => {
-                                      const option = document.createElement('option');
-                                      option.value = park.id;
-                                      option.textContent = park.park_name;
-                                      parkSelect.appendChild(option);
-                                  });
+                                                    // Populate park select dropdown with fetched data
+                                                    data.forEach(park => {
+                                                        const option = document.createElement('option');
+                                                        option.value = park.id;
+                                                        option.textContent = park.park_name;
+                                                        parkSelect.appendChild(option);
+                                                    });
 
-                                  // Trigger change event on park select to automatically select default tour
-                                  parkSelect.dispatchEvent(new Event('change'));
-                              })
-                              .catch(error => console.error('Error fetching parks:', error));
+                                                    // Get the default selected park
+                                                  
 
-                          // Add event listener for change event on park select
-                          document.getElementById('parkSelect').addEventListener('change', function() {
-                              // Get the selected park name and display it in the nametag element
-                              const selectedParkName = this.options[this.selectedIndex].textContent;
-                              const nametag = document.getElementById('nametag');
-                              nametag.textContent = selectedParkName;
-                          });
-                      });
+                                                    // Set q1 content immediately after populating parkSelect
+                                                    const q1Option = document.getElementById('q1');
+                                                    q1Option.textContent = defaultPark.q1;
+                                                })
+                                                .catch(error => console.error('Error fetching parks:', error));
+
+                                            // Add event listener for change event on parkSelect
+                                            document.getElementById('parkSelect').addEventListener('change', function() {
+                                                if (!parksData) {
+                                                    console.error('Parks data is not available.');
+                                                    return;
+                                                }
+                                                const defaultParkId = parkSelect.value;
+                                                    const defaultPark = parksData.find(park => park.id === defaultParkId);
+                                                // Get the selected park name and display it in the nametag element
+                                                const selectedParkName = this.options[this.selectedIndex].textContent;
+                                                const nametag = document.getElementById('nametag');
+                                                nametag.textContent = selectedParkName;
+
+                                                // Get the selected park data
+                                                const parkId = this.value;
+                                                const selectedPark = parksData.find(park => park.id === parkId);
+
+                                                // Update the options with the selected park data
+                                                const q1Option = document.getElementById('q1');
+                                                const q2Option = document.getElementById('q2');
+                                                const q3Option = document.getElementById('q3');
+                                                const a1 = document.getElementById('a1');
+                                                const a2 = document.getElementById('a2');
+                                                const a3 = document.getElementById('a3');
+
+                                                q1Option.innerHTML = selectedPark.q1;
+                                                q2Option.innerHTML = selectedPark.q2;
+                                                q3Option.innerHTML = selectedPark.q3;
+                                                a1.innerHTML = selectedPark.a1;
+                                                a2.innerHTML = selectedPark.a2;
+                                                a3.innerHTML = selectedPark.a3;
+                                                const selectElement = document.getElementById('tabSelect');
+                                        selectElement.dispatchEvent(new Event('change'));
+                                            });
+                                        });
+
+
+
+
+
+
+                                        function toggleActivitiesSelect(parkId) {
+                                            const activitiesSelect = document.getElementById('Activities');
+                                            if (parkId === '2' || parkId === '3' || parkId === '4') {
+                                                activitiesSelect.disabled = false; // Enable the select element
+                                            } else {
+                                                activitiesSelect.disabled = true; // Disable the select element
+                                            }
+                                        }
+
+                                        // Add event listener for change event on parkSelect
+                                        document.getElementById('parkSelect').addEventListener('change', function() {
+                                            const parkId = this.value;
+                                            if (parkId) {
+                                                toggleActivitiesSelect(parkId);
+                                            }
+                                        });
+
+
 
                               // Event listener for park select change
                               document.getElementById('parkSelect').addEventListener('change', function() {
                                   const parkId = this.value;
                                   if (parkId) {
+
+
                                    
                                       // Fetch tours for the selected park
                                       fetch('fetch_tours.php?park_id=' + parkId)
                                       .then(response => response.json())
                                       .then(data => {
                                           const tourSelect = document.getElementById('tourSelect');
+
+                                        
                                           // Clear existing options
                                           tourSelect.innerHTML = '<option value="">--Select The Park--</option>';
                                           // Populate tour select dropdown with fetched data
@@ -193,6 +253,7 @@
                               document.getElementById('parkSelect').addEventListener('change', function() {
                                   const parkId = this.value;
                                   if (parkId) {
+                                    
                                       // Fetch images for the selected park
                                       fetch('fetch_images.php?park_id=' + parkId)
                                       .then(response => response.json())
@@ -244,20 +305,20 @@
                             </div>
                         </div>
 
-                           <div class="form-group" style="font-size: larger">
-                            <label for="tourSelect">Activties</label>
-                            <div class="select-holder">
-                                <select class="trip"  style="height: 40px; width: 100%">
-                                    <!-- Options will be dynamically added here -->
-                                    <option value="">--select--</option>
+                        <div class="form-group" style="font-size: larger">
+                          <label for="tourSelect">Activities</label>
+                          <div class="select-holder">
+                              <select class="trip" style="height: 40px; width: 100%" id="Activities" disabled>
+                                  <!-- Options will be dynamically added here -->
+                                  <option value="">--select--</option>
 
-                                    <option value="">Sigiriya hot air balloon</option>
+                                  <option value="Sigiriya hot air balloon">Sigiriya hot air balloon</option>
 
-                                    <option value="">Whale and dolphin watching</option>
-                                    <option value="">Sigiriya village tour</option>
-                                </select>
-                            </div>
-                        </div>
+                                  <option value="Whale and dolphin watching">Whale and dolphin watching</option>
+                                  <option value="Sigiriya village tour">Sigiriya village tour</option>
+                              </select>
+                          </div>
+                      </div>
 
                       <div class="form-group" style="font-size: larger">
                         <label for="dateInput">Choose Date:</label>
@@ -755,15 +816,15 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="question-select">
-                      <select id="tabSelect" class="question">
-                        <option value="#innerTab1">
-                          What kind of footwear is suitable?
+                      <select id="tabSelect" class="question"> 
+                        <option value="#innerTab1" id="q1" >
+                         
                         </option>
-                        <option value="#innerTab2">
-                          What kind of bag is suitable?
+                        <option value="#innerTab2" id="q2">
+                         
                         </option>
-                        <option value="#innerTab3">
-                          What kind of clothes are suitable?
+                        <option value="#innerTab3" id="q3">
+                         
                         </option>
                       </select>
                       <ul class="nav nav-tabs" id="questionTab">
@@ -790,230 +851,18 @@
                         class="tab-pane active"
                         id="innerTab1"
                       >
-                        <div class="detail">
-                          <p>
-                            This is Photoshop's version of Lorem Ipsum. Proin
-                            gravida nibh vel velit auctor aliquet. Aenean
-                            sollicitudin, lorem quis bibendum auctor, nisi elit
-                            consequat ipsum, nec sagittis sem nibh id elit.
-                          </p>
-                          <p>
-                            Duis sed odio sit amet nibh vulputate cursus a sit
-                            amet mauris. Morbi accumsan ipsum velit. Nam nec
-                            tellus a odio tincidunt auctor a ornare odio.
-                          </p>
-                          <p>
-                            Sed non mauris vitae erat consequat auctor eu in
-                            elit. Class aptent taciti sociosqu ad litora
-                            torquent per conubia nostra, per inceptos himenaeos.
-                            Mauris in erat justo.
-                          </p>
-                          <p>
-                            Nullam ac urna eu felis dapibus condimentum sit amet
-                            a augue. Sed non neque elit. Sed ut imperdiet nisi.
-                          </p>
-                          <p>
-                            Proin condimentum fermentum nunc. Etiam pharetra,
-                            erat sed fermentum feugiat, velit mauris egestas
-                            quam.
-                          </p>
-                          <p>
-                            Ulins aliquam massa nisl quis neque. Proin
-                            condimentum fermentum nunc. Etiam pharetra, erat sed
-                            fermentum feugiat, velit mauris egestas quam, ut
-                            aliquam massa nisl quis neque.
-                          </p>
-                          <p>
-                            Proin condimentum fermentum nunc. Etiam pharetra,
-                            erat sed fermentum feugiat, velit mauris egestas
-                            quam.
-                          </p>
-                          <p>
-                            Ulins aliquam massa nisl quis neque. Proin
-                            condimentum fermentum nunc. Etiam pharetra, erat sed
-                            fermentum feugiat, velit mauris egestas quam, ut
-                            aliquam massa nisl quis neque.
-                          </p>
-                          <p>Suspendisse gin orci enim.</p>
-                          <ul class="img-list">
-                            <li>
-                              <img
-                                src="img/generic/img-12.jpg"
-                                height="52"
-                                width="101"
-                                alt="image description"
-                              />
-                            </li>
-                            <li>
-                              <img
-                                src="img/generic/img-13.jpg"
-                                height="97"
-                                width="114"
-                                alt="image description"
-                              />
-                            </li>
-                            <li>
-                              <img
-                                src="img/generic/img-14.jpg"
-                                height="104"
-                                width="124"
-                                alt="image description"
-                              />
-                            </li>
-                          </ul>
-                          <div class="reviews-slot v-middle">
-                            <div class="thumb">
-                              <a href="#"
-                                ><img
-                                  src="img/thumbs/img-04.jpg"
-                                  height="50"
-                                  width="50"
-                                  alt="image description"
-                              /></a>
-                            </div>
-                            <div class="text">
-                              <strong class="name"
-                                ><a href="#"
-                                  >Jessica Lambert - Customer Relations</a
-                                ></strong
-                              >
-                            </div>
-                          </div>
+                        <div class="detail" id="a1">
+                         
                         </div>
                       </div>
                       <div role="tabpanel" class="tab-pane" id="innerTab2">
-                        <div class="detail">
-                          <p>
-                            This is Photoshop's version of Lorem Ipsum. Proin
-                            gravida nibh vel velit auctor aliquet. Aenean
-                            sollicitudin, lorem quis bibendum auctor, nisi elit
-                            consequat ipsum, nec sagittis sem nibh id elit.
-                          </p>
-                          <p>
-                            Duis sed odio sit amet nibh vulputate cursus a sit
-                            amet mauris. Morbi accumsan ipsum velit. Nam nec
-                            tellus a odio tincidunt auctor a ornare odio.
-                          </p>
-                          <p>
-                            Sed non mauris vitae erat consequat auctor eu in
-                            elit. Class aptent taciti sociosqu ad litora
-                            torquent per conubia nostra, per inceptos himenaeos.
-                            Mauris in erat justo.
-                          </p>
-                          <p>
-                            Nullam ac urna eu felis dapibus condimentum sit amet
-                            a augue. Sed non neque elit. Sed ut imperdiet nisi.
-                          </p>
-                          <div class="reviews-slot v-middle">
-                            <div class="thumb">
-                              <a href="#"
-                                ><img
-                                  src="img/thumbs/img-04.jpg"
-                                  height="50"
-                                  width="50"
-                                  alt="image description"
-                              /></a>
-                            </div>
-                            <div class="text">
-                              <strong class="name"
-                                ><a href="#"
-                                  >Jessica Lambert - Customer Relations</a
-                                ></strong
-                              >
-                            </div>
-                          </div>
+                        <div class="detail" id="a2">
+                          
                         </div>
                       </div>
                       <div role="tabpanel" class="tab-pane" id="innerTab3">
-                        <div class="detail">
-                          <p>
-                            This is Photoshop's version of Lorem Ipsum. Proin
-                            gravida nibh vel velit auctor aliquet. Aenean
-                            sollicitudin, lorem quis bibendum auctor, nisi elit
-                            consequat ipsum, nec sagittis sem nibh id elit.
-                          </p>
-                          <p>
-                            Duis sed odio sit amet nibh vulputate cursus a sit
-                            amet mauris. Morbi accumsan ipsum velit. Nam nec
-                            tellus a odio tincidunt auctor a ornare odio.
-                          </p>
-                          <p>
-                            Sed non mauris vitae erat consequat auctor eu in
-                            elit. Class aptent taciti sociosqu ad litora
-                            torquent per conubia nostra, per inceptos himenaeos.
-                            Mauris in erat justo.
-                          </p>
-                          <p>
-                            Nullam ac urna eu felis dapibus condimentum sit amet
-                            a augue. Sed non neque elit. Sed ut imperdiet nisi.
-                          </p>
-                          <p>
-                            Proin condimentum fermentum nunc. Etiam pharetra,
-                            erat sed fermentum feugiat, velit mauris egestas
-                            quam.
-                          </p>
-                          <p>
-                            Ulins aliquam massa nisl quis neque. Proin
-                            condimentum fermentum nunc. Etiam pharetra, erat sed
-                            fermentum feugiat, velit mauris egestas quam, ut
-                            aliquam massa nisl quis neque.
-                          </p>
-                          <p>
-                            Proin condimentum fermentum nunc. Etiam pharetra,
-                            erat sed fermentum feugiat, velit mauris egestas
-                            quam.
-                          </p>
-                          <p>
-                            Ulins aliquam massa nisl quis neque. Proin
-                            condimentum fermentum nunc. Etiam pharetra, erat sed
-                            fermentum feugiat, velit mauris egestas quam, ut
-                            aliquam massa nisl quis neque.
-                          </p>
-                          <p>Suspendisse gin orci enim.</p>
-                          <ul class="img-list">
-                            <li>
-                              <img
-                                src="img/generic/img-12.jpg"
-                                height="52"
-                                width="101"
-                                alt="image description"
-                              />
-                            </li>
-                            <li>
-                              <img
-                                src="img/generic/img-13.jpg"
-                                height="97"
-                                width="114"
-                                alt="image description"
-                              />
-                            </li>
-                            <li>
-                              <img
-                                src="img/generic/img-14.jpg"
-                                height="104"
-                                width="124"
-                                alt="image description"
-                              />
-                            </li>
-                          </ul>
-                          <div class="reviews-slot v-middle">
-                            <div class="thumb">
-                              <a href="#"
-                                ><img
-                                  src="img/thumbs/img-04.jpg"
-                                  height="50"
-                                  width="50"
-                                  alt="image description"
-                              /></a>
-                            </div>
-                            <div class="text">
-                              <strong class="name"
-                                ><a href="#"
-                                  >Jessica Lambert - Customer Relations</a
-                                ></strong
-                              >
-                            </div>
-                          </div>
+                        <div class="detail" id="a3">
+                        
                         </div>
                       </div>
                     </div>
@@ -1328,11 +1177,10 @@
                             </thead>
                             <tbody>
                               <!-- Add a row for each tour type and its price -->
-                              <tr>
+                             <tr>
                                 <td style="padding: 5px" class="tourName"></td>
                                 <td style="padding: 5px" class="tourPrice"></td>
                               </tr>
-                               
                               <!-- Add more rows as necessary -->
                             </tbody>
                           </table>
@@ -1340,14 +1188,11 @@
                         </div>
                       </div>
                     </li>
-                    
                     <!-- Add more list items for other PAX values -->
+                    
                   </ul>
-                </div>
 
 
-                <div class="col-sm-12 demo-wrapper" style="padding: 10px">
-                 
                   <ul class="detail-accordion accordion-v2">
                     <li class="active">
                       <a href="#">
@@ -1376,145 +1221,149 @@
                         </div>
                       </div>
                     </li>
-                     </ul>
-                   </div>
-                  
-                <div class="col-sm-12 demo-wrapper" style="padding: 10px">
-                 
-                 <ul class="detail-accordion accordion-v2">
-                   <li class="active">
-                     <a href="#">
-                       <strong class="title">PAX 3</strong>
-                     </a>
-                     <div class="slide">
-                       <div class="slide-holder">
-                         <!-- Start of the table -->
-                         <table style="width: 100%; font-size: 1.2em">
-                           <thead>
-                             <tr>
-                               <th style="padding: 5px">Tour Type</th>
-                               <th style="padding: 5px">Price</th>
-                             </tr>
-                           </thead>
-                           <tbody>
-                             <!-- Add a row for each tour type and its price -->
-                             <tr>
+                    <!-- Add more list items for other PAX values -->
+                  </ul>
+
+
+
+
+
+                  <ul class="detail-accordion accordion-v2">
+                    <li class="active">
+                      <a href="#">
+                        <strong class="title">PAX 3</strong>
+                      </a>
+                      <div class="slide">
+                        <div class="slide-holder">
+                          <!-- Start of the table -->
+                          <table style="width: 100%; font-size: 1.2em">
+                            <thead>
+                              <tr>
+                                <th style="padding: 5px">Tour Type</th>
+                                <th style="padding: 5px">Price</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <!-- Add a row for each tour type and its price -->
+                              <tr>
                                <td style="padding: 5px" class="tourName"></td>
                                <td style="padding: 5px" class="tourPrice2"></td>
                              </tr>
-                             <!-- Add more rows as necessary -->
-                           </tbody>
-                         </table>
-                         <!-- End of the table -->
-                       </div>
-                     </div>
-                   </li>
-                    </ul>
-                   </div>
-                  
-                <div class="col-sm-12 demo-wrapper" style="padding: 10px">
-                 
-                 <ul class="detail-accordion accordion-v2">
-                   <li class="active">
-                     <a href="#">
-                       <strong class="title">PAX 4</strong>
-                     </a>
-                     <div class="slide">
-                       <div class="slide-holder">
-                         <!-- Start of the table -->
-                         <table style="width: 100%; font-size: 1.2em">
-                           <thead>
-                             <tr>
-                               <th style="padding: 5px">Tour Type</th>
-                               <th style="padding: 5px">Price</th>
-                             </tr>
-                           </thead>
-                           <tbody>
-                             <!-- Add a row for each tour type and its price -->
-                             <tr>
+                              <!-- Add more rows as necessary -->
+                            </tbody>
+                          </table>
+                          <!-- End of the table -->
+                        </div>
+                      </div>
+                    </li>
+                    <!-- Add more list items for other PAX values -->
+                  </ul>
+
+
+
+                  <ul class="detail-accordion accordion-v2">
+                    <li class="active">
+                      <a href="#">
+                        <strong class="title">PAX 4</strong>
+                      </a>
+                      <div class="slide">
+                        <div class="slide-holder">
+                          <!-- Start of the table -->
+                          <table style="width: 100%; font-size: 1.2em">
+                            <thead>
+                              <tr>
+                                <th style="padding: 5px">Tour Type</th>
+                                <th style="padding: 5px">Price</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <!-- Add a row for each tour type and its price -->
+                                <tr>
                                <td style="padding: 5px" class="tourName"></td>
                                <td style="padding: 5px" class="tourPrice3"></td>
                              </tr>
-                             <!-- Add more rows as necessary -->
-                           </tbody>
-                         </table>
-                         <!-- End of the table -->
-                       </div>
-                     </div>
-                   </li>
-                    </ul>
-              </div>
-                  
-             <div class="col-sm-12 demo-wrapper" style="padding: 10px">
-                 
-                 <ul class="detail-accordion accordion-v2">
-                   <li class="active">
-                     <a href="#">
-                       <strong class="title">PAX 5</strong>
-                     </a>
-                     <div class="slide">
-                       <div class="slide-holder">
-                         <!-- Start of the table -->
-                         <table style="width: 100%; font-size: 1.2em">
-                           <thead>
-                             <tr>
-                               <th style="padding: 5px">Tour Type</th>
-                               <th style="padding: 5px">Price</th>
-                             </tr>
-                           </thead>
-                           <tbody>
-                             <!-- Add a row for each tour type and its price -->
-                             <tr>
+                              <!-- Add more rows as necessary -->
+                            </tbody>
+                          </table>
+                          <!-- End of the table -->
+                        </div>
+                      </div>
+                    </li>
+                    <!-- Add more list items for other PAX values -->
+                  </ul>
+
+
+                  <ul class="detail-accordion accordion-v2">
+                    <li class="active">
+                      <a href="#">
+                        <strong class="title">PAX 5</strong>
+                      </a>
+                      <div class="slide">
+                        <div class="slide-holder">
+                          <!-- Start of the table -->
+                          <table style="width: 100%; font-size: 1.2em">
+                            <thead>
+                              <tr>
+                                <th style="padding: 5px">Tour Type</th>
+                                <th style="padding: 5px">Price</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <!-- Add a row for each tour type and its price -->
+                               <tr>
                                <td style="padding: 5px" class="tourName"></td>
                                <td style="padding: 5px" class="tourPrice4"></td>
                              </tr>
-                             <!-- Add more rows as necessary -->
-                           </tbody>
-                         </table>
-                         <!-- End of the table -->
-                       </div>
-                     </div>
-                   </li>
- </ul>
-                </div>
-                  
-                 <div class="col-sm-12 demo-wrapper" style="padding: 10px"> 
-                 <ul class="detail-accordion accordion-v2">
-                   <li class="active">
-                     <a href="#">
-                       <strong class="title">PAX 6</strong>
-                     </a>
-                     <div class="slide">
-                       <div class="slide-holder">
-                         <!-- Start of the table -->
-                         <table style="width: 100%; font-size: 1.2em">
-                           <thead>
-                             <tr>
-                               <th style="padding: 5px">Tour Type</th>
-                               <th style="padding: 5px">Price</th>
-                             </tr>
-                           </thead>
-                           <tbody>
-                             <!-- Add a row for each tour type and its price -->
-                             <tr>
+                              <!-- Add more rows as necessary -->
+                            </tbody>
+                          </table>
+                          <!-- End of the table -->
+                        </div>
+                      </div>
+                    </li>
+                    <!-- Add more list items for other PAX values -->
+                  </ul>
+
+
+
+                  <ul class="detail-accordion accordion-v2">
+                    <li class="active">
+                      <a href="#">
+                        <strong class="title">PAX 6</strong>
+                      </a>
+                      <div class="slide">
+                        <div class="slide-holder">
+                          <!-- Start of the table -->
+                          <table style="width: 100%; font-size: 1.2em">
+                            <thead>
+                              <tr>
+                                <th style="padding: 5px">Tour Type</th>
+                                <th style="padding: 5px">Price</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <!-- Add a row for each tour type and its price -->
+                                <tr>
                                <td style="padding: 5px" class="tourName"></td>
                                <td style="padding: 5px" class="tourPrice5"></td>
                              </tr>
-                             <!-- Add more rows as necessary -->
-                           </tbody>
-                         </table>
-                         <!-- End of the table -->
-                       </div>
-                     </div>
-                   </li>
-                    </ul>
-                </div>
+                              <!-- Add more rows as necessary -->
+                            </tbody>
+                          </table>
+                          <!-- End of the table -->
+                        </div>
+                      </div>
+                    </li>
                     <!-- Add more list items for other PAX values -->
                   </ul>
+
+
+
+
                 </div>
+
+                
               </div>
-            </div>
-          </div>
           <!-- recent block -->
         </main>
       </div>
