@@ -131,71 +131,90 @@
                         </div>
                       </div>
                     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Fetch parks data when the page loads
-    fetch('fetch_parks.php')
-        .then(response => response.json())
-        .then(data => {
-            parksData = data; // Assign fetched data to parksData variable
-            console.log(parksData);
-            const nametag = document.getElementById('nametag');
-            const parkSelect = document.getElementById('parkSelect');
+                                        document.addEventListener('DOMContentLoaded', function() {
+                                            // Fetch parks data when the page loads
+                                            fetch('fetch_parks.php')
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    parksData = data; // Assign fetched data to parksData variable
+                                                    console.log(parksData);
+                                                    const nametag = document.getElementById('nametag');
+                                                    const parkSelect = document.getElementById('parkSelect');
 
-            // Populate park select dropdown with fetched data
-            data.forEach(park => {
-                const option = document.createElement('option');
-                option.value = park.id;
-                option.textContent = park.park_name;
-                parkSelect.appendChild(option);
-            });
+                                                    // Populate park select dropdown with fetched data
+                                                    data.forEach(park => {
+                                                        const option = document.createElement('option');
+                                                        option.value = park.id;
+                                                        option.textContent = park.park_name;
+                                                        parkSelect.appendChild(option);
+                                                    });
 
-            // Get the default selected park
-          
+                                                    // Get the default selected park
+                                                  
 
-            // Set q1 content immediately after populating parkSelect
-            const q1Option = document.getElementById('q1');
-            q1Option.textContent = defaultPark.q1;
-        })
-        .catch(error => console.error('Error fetching parks:', error));
+                                                    // Set q1 content immediately after populating parkSelect
+                                                    const q1Option = document.getElementById('q1');
+                                                    q1Option.textContent = defaultPark.q1;
+                                                })
+                                                .catch(error => console.error('Error fetching parks:', error));
 
-    // Add event listener for change event on parkSelect
-    document.getElementById('parkSelect').addEventListener('change', function() {
-        if (!parksData) {
-            console.error('Parks data is not available.');
-            return;
-        }
-        const defaultParkId = parkSelect.value;
-            const defaultPark = parksData.find(park => park.id === defaultParkId);
-        // Get the selected park name and display it in the nametag element
-        const selectedParkName = this.options[this.selectedIndex].textContent;
-        const nametag = document.getElementById('nametag');
-        nametag.textContent = selectedParkName;
+                                            // Add event listener for change event on parkSelect
+                                            document.getElementById('parkSelect').addEventListener('change', function() {
+                                                if (!parksData) {
+                                                    console.error('Parks data is not available.');
+                                                    return;
+                                                }
+                                                const defaultParkId = parkSelect.value;
+                                                    const defaultPark = parksData.find(park => park.id === defaultParkId);
+                                                // Get the selected park name and display it in the nametag element
+                                                const selectedParkName = this.options[this.selectedIndex].textContent;
+                                                const nametag = document.getElementById('nametag');
+                                                nametag.textContent = selectedParkName;
 
-        // Get the selected park data
-        const parkId = this.value;
-        const selectedPark = parksData.find(park => park.id === parkId);
+                                                // Get the selected park data
+                                                const parkId = this.value;
+                                                const selectedPark = parksData.find(park => park.id === parkId);
 
-        // Update the options with the selected park data
-        const q1Option = document.getElementById('q1');
-        const q2Option = document.getElementById('q2');
-        const q3Option = document.getElementById('q3');
-        const a1 = document.getElementById('a1');
-        const a2 = document.getElementById('a2');
-        const a3 = document.getElementById('a3');
+                                                // Update the options with the selected park data
+                                                const q1Option = document.getElementById('q1');
+                                                const q2Option = document.getElementById('q2');
+                                                const q3Option = document.getElementById('q3');
+                                                const a1 = document.getElementById('a1');
+                                                const a2 = document.getElementById('a2');
+                                                const a3 = document.getElementById('a3');
 
-        q1Option.innerHTML = selectedPark.q1;
-        q2Option.innerHTML = selectedPark.q2;
-        q3Option.innerHTML = selectedPark.q3;
-        a1.innerHTML = selectedPark.a1;
-        a2.innerHTML = selectedPark.a2;
-        a3.innerHTML = selectedPark.a3;
-        const selectElement = document.getElementById('tabSelect');
-selectElement.dispatchEvent(new Event('change'));
-    });
-});
+                                                q1Option.innerHTML = selectedPark.q1;
+                                                q2Option.innerHTML = selectedPark.q2;
+                                                q3Option.innerHTML = selectedPark.q3;
+                                                a1.innerHTML = selectedPark.a1;
+                                                a2.innerHTML = selectedPark.a2;
+                                                a3.innerHTML = selectedPark.a3;
+                                                const selectElement = document.getElementById('tabSelect');
+                                        selectElement.dispatchEvent(new Event('change'));
+                                            });
+                                        });
 
 
 
+
+                                          // Event listener for Activities disabled and enable 
+
+                                        function toggleActivitiesSelect(parkId) {
+                                            const activitiesSelect = document.getElementById('Activities');
+                                            if (parkId === '2' || parkId === '3' || parkId === '4') {
+                                                activitiesSelect.disabled = false; // Enable the select element
+                                            } else {
+                                                activitiesSelect.disabled = true; // Disable the select element
+                                            }
+                                        }
+
+                                        // Add event listener for change event on parkSelect
+                                        document.getElementById('parkSelect').addEventListener('change', function() {
+                                            const parkId = this.value;
+                                            if (parkId) {
+                                                toggleActivitiesSelect(parkId);
+                                            }
+                                        });
 
 
 
@@ -203,12 +222,16 @@ selectElement.dispatchEvent(new Event('change'));
                               document.getElementById('parkSelect').addEventListener('change', function() {
                                   const parkId = this.value;
                                   if (parkId) {
+
+
                                    
                                       // Fetch tours for the selected park
                                       fetch('fetch_tours.php?park_id=' + parkId)
                                       .then(response => response.json())
                                       .then(data => {
                                           const tourSelect = document.getElementById('tourSelect');
+
+                                        
                                           // Clear existing options
                                           tourSelect.innerHTML = '<option value="">--Select The Park--</option>';
                                           // Populate tour select dropdown with fetched data
@@ -230,6 +253,7 @@ selectElement.dispatchEvent(new Event('change'));
                               document.getElementById('parkSelect').addEventListener('change', function() {
                                   const parkId = this.value;
                                   if (parkId) {
+                                    
                                       // Fetch images for the selected park
                                       fetch('fetch_images.php?park_id=' + parkId)
                                       .then(response => response.json())
@@ -281,20 +305,20 @@ selectElement.dispatchEvent(new Event('change'));
                             </div>
                         </div>
 
-                           <div class="form-group" style="font-size: larger">
-                            <label for="tourSelect">Activties</label>
-                            <div class="select-holder">
-                                <select class="trip"  style="height: 40px; width: 100%">
-                                    <!-- Options will be dynamically added here -->
-                                    <option value="">--select--</option>
+                        <div class="form-group" style="font-size: larger">
+                          <label for="tourSelect">Activities</label>
+                          <div class="select-holder">
+                              <select class="trip" style="height: 40px; width: 100%" id="Activities" disabled>
+                                  <!-- Options will be dynamically added here -->
+                                  <option value="">--select--</option>
 
-                                    <option value="">Sigiriya hot air balloon</option>
+                                  <option value="Sigiriya hot air balloon">Sigiriya hot air balloon</option>
 
-                                    <option value="">Whale and dolphin watching</option>
-                                    <option value="">Sigiriya village tour</option>
-                                </select>
-                            </div>
-                        </div>
+                                  <option value="Whale and dolphin watching">Whale and dolphin watching</option>
+                                  <option value="Sigiriya village tour">Sigiriya village tour</option>
+                              </select>
+                          </div>
+                      </div>
 
                       <div class="form-group" style="font-size: larger">
                         <label for="dateInput">Choose Date:</label>

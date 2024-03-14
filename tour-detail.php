@@ -197,7 +197,7 @@
 
 
 
-
+                                          // Event listener for Activities disabled and enable 
 
                                         function toggleActivitiesSelect(parkId) {
                                             const activitiesSelect = document.getElementById('Activities');
