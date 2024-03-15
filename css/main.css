@@ -21,8 +21,7 @@ Version: 		1.2.7
 12. Table / .table
 13. Carousel
 14. Blog
-15. Search form / .search-form
-16. Comment form / .comment-form
+15. Search form / .search-formbanner-layout-fullwidth-yala
 17. Contact page
 18. Default Page
 19. Footer / #footer
@@ -1461,6 +1460,14 @@ blockquote.normal {
 
 #banner-layout-fullwidth-yala {
 	background-image: url('../img/yala/tiger.jpg');
+}
+
+#banner-layout-fullwidth-sigiriya-village {
+	background-image: url('../img/sigiriyya_village.jpg');
+}
+
+#banner-layout-fullwidth-sigiriya-hotair {
+	background-image: url('../img/hot_air_balloon.jpg');
 }
 
 #banner-layout-fullwidth-whalewatching {

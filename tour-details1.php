@@ -318,7 +318,26 @@
                                   <option value="Sigiriya village tour">Sigiriya village tour</option>
                               </select>
                           </div>
-                      </div>
+                       </div>
+
+
+                         <div class="form-group" style="font-size: larger">
+                          <label for="tourSelect">Choose the jeep</label>
+                          <div class="select-holder">
+                              <select class="trip" style="height: 40px; width: 100%" id="Activities" disabled>
+                                  <!-- Options will be dynamically added here -->
+                                  <option value="">--select--</option>
+
+                                  <option value="Sigiriya hot air balloon">Mahindra Bolero</option>
+
+                                  <option value="Whale and dolphin watching">Toyota hilux</option>
+                                  <option value="Sigiriya village tour">Toyota land cruise</option>
+                              </select>
+                          </div>
+                       </div>
+
+
+
 
                       <div class="form-group" style="font-size: larger">
                         <label for="dateInput">Choose Date:</label>
