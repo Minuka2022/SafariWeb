@@ -104,15 +104,16 @@
                   <div
                     class="price"
                     style="text-align: center; font-size: xx-large"
+                    id="totalPrice"
                   >
-                    from <strong>US $979</strong>
+                    from Total Price: <strong>US $0</strong>
                   </div>
 
                   <ul
                     class="reviews-info"
                     style="text-align: left; font-size: larger"
                   >
-                    
+                    <!-- ... existing content ... -->
                   </ul>
 
                   <div class="btn-holder" style="text-align: left">
@@ -130,8 +131,27 @@
                           </select>
                         </div>
                       </div>
+
+
+                      <script>
+
+
+  
+
+        
+                
+
+          
+    </script>
+
                     <script>
                                         document.addEventListener('DOMContentLoaded', function() {
+                                          const childrenInputElement = document.getElementById('childrenInput');
+                                        const adultsInputElement = document.getElementById('adultsInput');
+
+                                          const tourId = this.value;
+                                          childrenInputElement.disabled = !tourId;
+                                          adultsInputElement.disabled = !tourId;
                                             // Fetch parks data when the page loads
                                             fetch('fetch_parks.php')
                                                 .then(response => response.json())
@@ -160,20 +180,24 @@
 
                                             // Add event listener for change event on parkSelect
                                             document.getElementById('parkSelect').addEventListener('change', function() {
+                                              
                                                 if (!parksData) {
                                                     console.error('Parks data is not available.');
                                                     return;
                                                 }
+                                                
                                                 const defaultParkId = parkSelect.value;
                                                     const defaultPark = parksData.find(park => park.id === defaultParkId);
                                                 // Get the selected park name and display it in the nametag element
                                                 const selectedParkName = this.options[this.selectedIndex].textContent;
                                                 const nametag = document.getElementById('nametag');
                                                 nametag.textContent = selectedParkName;
+                                               
 
                                                 // Get the selected park data
                                                 const parkId = this.value;
                                                 const selectedPark = parksData.find(park => park.id === parkId);
+                                                
 
                                                 // Update the options with the selected park data
                                                 const q1Option = document.getElementById('q1');
@@ -189,8 +213,28 @@
                                                 a1.innerHTML = selectedPark.a1;
                                                 a2.innerHTML = selectedPark.a2;
                                                 a3.innerHTML = selectedPark.a3;
+
+                                                const vehicaleSelect = document.getElementById('vehicale');
+                                                vehicaleSelect.innerHTML = '<option value="">--select--</option>';
+                                                
+                                               
+                                                  if (selectedPark) {
+                                                    if (selectedPark.v1 && selectedPark.vp1) {
+                                                        vehicaleSelect.innerHTML += `<option value="${selectedPark.vp1}">${selectedPark.v1} - ${"$"+selectedPark.vp1}</option>`;
+                                                    }
+                                                    if (selectedPark.v2 && selectedPark.vp2) {
+                                                        vehicaleSelect.innerHTML += `<option value="${selectedPark.vp2}">${selectedPark.v2} - ${"$"+selectedPark.vp2}</option>`;
+                                                    }
+                                                    if (selectedPark.v3 && selectedPark.vp3) {
+                                                        vehicaleSelect.innerHTML += `<option value="${selectedPark.vp3}">${selectedPark.v3} - ${"$"+selectedPark.vp3}</option>`;
+                                                    }
+                                                    // Repeat for other vehicles and their prices if available
+                                                }
+
+
                                                 const selectElement = document.getElementById('tabSelect');
                                         selectElement.dispatchEvent(new Event('change'));
+                                        vehicaleSelect.dispatchEvent(new Event('change'));
                                             });
                                         });
 
@@ -242,6 +286,7 @@
 
                                               tourSelect.appendChild(option);
                                           });
+                                          tourSelect.dispatchEvent(new Event('change'));
                                       })
                                       .catch(error => console.error('Error fetching tours:', error));
                                   }
@@ -251,6 +296,7 @@
                           document.addEventListener('DOMContentLoaded', function() {
     // Event listener for park select change
                               document.getElementById('parkSelect').addEventListener('change', function() {
+                               
                                   const parkId = this.value;
                                   if (parkId) {
                                     
@@ -318,7 +364,23 @@
                                   <option value="Sigiriya village tour">Sigiriya village tour</option>
                               </select>
                           </div>
-                      </div>
+                       </div>
+
+
+                         <div class="form-group" style="font-size: larger">
+                          <label for="tourSelect">Choose the jeep</label>
+                          <div class="select-holder">
+                              <select class="trip" style="height: 40px; width: 100%" id="vehicale"  >
+                                  <!-- Options will be dynamically added here -->
+                                  <option value="">--select--</option>
+
+                                
+                              </select>
+                          </div>
+                       </div>
+
+
+
 
                       <div class="form-group" style="font-size: larger">
                         <label for="dateInput">Choose Date:</label>
@@ -459,7 +521,7 @@
                 <div class="row">
                   <div class="col-md-6">
                     <strong class="header-box"
-                      > National park overview</strong
+                      >All about the classic Annapurna Circuit Trekking</strong
                     >
                     <div class="detail " id="tour_details">
                      
@@ -485,14 +547,332 @@
                         </div>
                       </div>
                     </div>
-                    
+                    <div class="text-box not-included">
+                      <div class="holder">
+                        <strong class="title"
+                          >Whats not included in this tour</strong
+                        >
+                        <span class="sub-title"
+                          >Items that are covered in the cost of tour
+                          price.</span
+                        >
+                        <p>
+                          This is Photoshop's version of Lorem Ipsum. Proin
+                          gravida nibh vel velit auctor aliquet. Aenean
+                          sollicitudin, lorem quis bibendum auctor, nisi elit
+                          consequat ipsum, nec sagittis sem nibh id elit.
+                        </p>
+                        <ul class="content-list cross-list">
+                          <li>Travel insurance and other emergencies</li>
+                          <li>Visa fees and entry clearing fees</li>
+                          <li>Single room accommodations</li>
+                          <li>Liquors, beeers and bootled beverages</li>
+                          <li>Photography ccessories like cameras etc.</li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
               <!-- itinerary tab content -->
-              
+              <div role="tabpanel" class="tab-pane" id="tab02">
+                <div class="row">
+                  <div class="col-md-6">
+                    <ol class="detail-accordion">
+                      <li>
+                        <a href="#">
+                          <strong class="title">Day 1</strong>
+                          <span>Depart London</span>
+                        </a>
+                        <div class="slide">
+                          <div class="slide-holder">
+                            <p>
+                              Lorem ipsum dolor sit amet, consectetur
+                              adipisicing elit, sed do eiusmod tempor incididunt
+                              ut labore et dolore magna aliqua. Ut enim ad minim
+                              veniam, quis nostrud exercitation ullamco laboris
+                              nisi ctetur, adipisci velit, sed quia non numquam
+                              eius modi.
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <strong class="title">Day 2</strong>
+                          <span>Arrive in Kathmandu</span>
+                        </a>
+                        <div class="slide">
+                          <div class="slide-holder">
+                            <p>
+                              Lorem ipsum dolor sit amet, consectetur
+                              adipisicing elit, sed do eiusmod tempor incididunt
+                              ut labore et dolore magna aliqua. Ut enim ad minim
+                              veniam, quis nostrud exercitation ullamco laboris
+                              nisi ctetur, adipisci velit, sed quia non numquam
+                              eius modi.
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <strong class="title">Day 3</strong>
+                          <span>Leave for Pokhara</span>
+                        </a>
+                        <div class="slide">
+                          <div class="slide-holder">
+                            <p>
+                              Lorem ipsum dolor sit amet, consectetur
+                              adipisicing elit, sed do eiusmod tempor incididunt
+                              ut labore et dolore magna aliqua. Ut enim ad minim
+                              veniam, quis nostrud exercitation ullamco laboris
+                              nisi ctetur, adipisci velit, sed quia non numquam
+                              eius modi.
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <strong class="title">Day 4</strong>
+                          <span>Start Trekking at Besi</span>
+                        </a>
+                        <div class="slide">
+                          <div class="slide-holder">
+                            <p>
+                              Lorem ipsum dolor sit amet, consectetur
+                              adipisicing elit, sed do eiusmod tempor incididunt
+                              ut labore et dolore magna aliqua. Ut enim ad minim
+                              veniam, quis nostrud exercitation ullamco laboris
+                              nisi ctetur, adipisci velit, sed quia non numquam
+                              eius modi.
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <strong class="title">Day 5</strong>
+                          <span>Day subtitle message</span>
+                        </a>
+                        <div class="slide">
+                          <div class="slide-holder">
+                            <p>
+                              Lorem ipsum dolor sit amet, consectetur
+                              adipisicing elit, sed do eiusmod tempor incididunt
+                              ut labore et dolore magna aliqua. Ut enim ad minim
+                              veniam, quis nostrud exercitation ullamco laboris
+                              nisi ctetur, adipisci velit, sed quia non numquam
+                              eius modi.
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <strong class="title">Day 6</strong>
+                          <span>Day subtitle message</span>
+                        </a>
+                        <div class="slide">
+                          <div class="slide-holder">
+                            <p>
+                              Lorem ipsum dolor sit amet, consectetur
+                              adipisicing elit, sed do eiusmod tempor incididunt
+                              ut labore et dolore magna aliqua. Ut enim ad minim
+                              veniam, quis nostrud exercitation ullamco laboris
+                              nisi ctetur, adipisci velit, sed quia non numquam
+                              eius modi.
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <strong class="title">Day 7</strong>
+                          <span>Depart London</span>
+                        </a>
+                        <div class="slide">
+                          <div class="slide-holder">
+                            <p>
+                              Lorem ipsum dolor sit amet, consectetur
+                              adipisicing elit, sed do eiusmod tempor incididunt
+                              ut labore et dolore magna aliqua. Ut enim ad minim
+                              veniam, quis nostrud exercitation ullamco laboris
+                              nisi ctetur, adipisci velit, sed quia non numquam
+                              eius modi.
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="active">
+                        <a href="#">
+                          <strong class="title">Day 8</strong>
+                          <span>Return to London</span>
+                        </a>
+                        <div class="slide">
+                          <div class="slide-holder">
+                            <p>
+                              This is Photoshop's version of Lorem Ipsum. Proin
+                              gravida nibh vel velit auctor aliquet. Aenean
+                              sollicitudin, lorem quis bibendum auctor, nisi
+                              elit consequat ipsum, nec sagittis sem nibh id
+                              elit.
+                            </p>
+                            <p>
+                              Duis sed odio sit amet nibh vulputate cursus a sit
+                              amet mauris. Morbi accumsan ipsum velit. Nam nec
+                              tellus a odio tincidunt auctor a ornare odio.
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                    </ol>
+                  </div>
+                  <div class="col-md-6">
+                    <article class="img-article article-light">
+                      <div class="img-wrap">
+                        <img
+                          src="img/generic/img-08.jpg"
+                          height="319"
+                          width="570"
+                          alt="image description"
+                        />
+                      </div>
+                      <div class="text-block">
+                        <h3><a href="#">Member taking a short break</a></h3>
+                        <p>
+                          Consider packing your bag with folloing daily
+                          essentials.
+                        </p>
+                      </div>
+                    </article>
+                    <article class="img-article article-light">
+                      <div class="img-wrap">
+                        <img
+                          src="img/generic/img-09.jpg"
+                          height="319"
+                          width="570"
+                          alt="image description"
+                        />
+                      </div>
+                      <div class="text-block">
+                        <h3>
+                          <a href="#">Couple enjoying the spectacular view</a>
+                        </h3>
+                        <p>
+                          Consider packing your bag with folloing daily
+                          essentials.
+                        </p>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+              </div>
               <!-- accomodation tab content -->
-              
+              <div role="tabpanel" class="tab-pane" id="tab03">
+                <div class="row">
+                  <div class="col-md-6">
+                    <strong class="header-box"
+                      >Hotels, Tea Houses and Lodges</strong
+                    >
+                    <div class="detail">
+                      <p>
+                        This is Photoshop's version of Lorem Ipsum. Proin
+                        gravida nibh vel velit auctor aliquet. Aenean
+                        sollicitudin, lorem quis bibendum auctor, nisi elit
+                        consequat ipsum, nec sagittis sem nibh id elit.
+                      </p>
+                      <p>
+                        Duis sed odio sit amet nibh vulputate cursus a sit amet
+                        mauris. Morbi accumsan ipsum velit. Nam nec tellus a
+                        odio tincidunt auctor a ornare odio.
+                      </p>
+                      <p>
+                        Sed non mauris vitae erat consequat auctor eu in elit.
+                        Class aptent taciti sociosqu ad litora torquent per
+                        conubia nostra, per inceptos himenaeos. Mauris in erat
+                        justo.
+                      </p>
+                      <p>
+                        Nullam ac urna eu felis dapibus condimentum sit amet a
+                        augue. Sed non neque elit. Sed ut imperdiet nisi.
+                      </p>
+                      <p>
+                        Proin condimentum fermentum nunc. Etiam pharetra, erat
+                        sed fermentum feugiat, velit mauris egestas quam.
+                      </p>
+                      <p>
+                        Ulins aliquam massa nisl quis neque. Proin condimentum
+                        fermentum nunc. Etiam pharetra, erat sed fermentum
+                        feugiat, velit mauris egestas quam, ut aliquam massa
+                        nisl quis neque.
+                      </p>
+                      <p>
+                        Proin condimentum fermentum nunc. Etiam pharetra, erat
+                        sed fermentum feugiat, velit mauris egestas quam.
+                      </p>
+                      <p>
+                        Ulins aliquam massa nisl quis neque. Proin condimentum
+                        fermentum nunc. Etiam pharetra, erat sed fermentum
+                        feugiat, velit mauris egestas quam, ut aliquam massa
+                        nisl quis neque.
+                      </p>
+                      <p>
+                        Ulins aliquam massa nisl quis neque. Proin condimentum
+                        fermentum nunc. Etiam pharetra, erat sed fermentum
+                        feugiat, velit mauris egestas quam, ut aliquam massa
+                        nisl quis neque.
+                      </p>
+                      <p>Suspendisse gin orci enim.</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6 accomodation-block">
+                    <strong class="header-box"
+                      >The tour package inclusions and exclusions at a
+                      glance</strong
+                    >
+                    <div class="text-box">
+                      <div class="holder">
+                        <strong class="title"
+                          >Shared Rooms included in teh Price</strong
+                        >
+                        <span class="sub-title"
+                          >Items that are covered in the cost of tour
+                          price.</span
+                        >
+                        <div class="img-holder">
+                          <img
+                            src="img/generic/img-10.jpg"
+                            height="467"
+                            width="700"
+                            alt="image description"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="text-box not-included">
+                      <div class="holder">
+                        <strong class="title"
+                          >Individual Rooms not included in the Price</strong
+                        >
+                        <span class="sub-title"
+                          >Items that are covered in the cost of tour
+                          price.</span
+                        >
+                        <div class="img-holder">
+                          <img
+                            src="img/generic/img-11.jpg"
+                            height="467"
+                            width="700"
+                            alt="image description"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <!-- faq and review tab content -->
               <div role="tabpanel" class="tab-pane" id="tab04">
                 <div class="row">
@@ -1052,17 +1432,29 @@
       
       <script>
 
+       
 
 
+        let tourPrices = {};
     // Event listener for tour select change
     document.getElementById('tourSelect').addEventListener('change', function() {
     const tourId = this.value;
+    const childrenInputElement = document.getElementById('childrenInput');
+    const adultsInputElement = document.getElementById('adultsInput');
+    childrenInputElement.disabled = !tourId;
+    adultsInputElement.disabled = !tourId;
     if (tourId) {
         // Fetch tour details based on the selected tour ID
         fetch('fetch_tour_details.php?tour_id=' + tourId)
         .then(response => response.json())
         .then(data => {
-            console.log(data); // Log received data to the console
+            tourPricesProxy.tour_price = data.tour_price;
+            tourPricesProxy.tour_price1 = data.tour_price1;
+            tourPricesProxy.tour_price2 = data.tour_price2;
+            tourPricesProxy.tour_price3 = data.tour_price3;
+            tourPricesProxy.tour_price4 = data.tour_price4;
+            tourPricesProxy.tour_price5 = data.tour_price5;
+            // console.log(data); // Log received data to the console
             // Update the table with tour details
             const tourNameCells = document.querySelectorAll('.tourName');
             const tourPriceCells = document.querySelectorAll('.tourPrice');
@@ -1074,7 +1466,7 @@
             const tour_details = document.getElementById('tour_details');
             const tinclude = document.getElementById('tinclude');
 
-            console.log(tinclude.length,tour_details.length); // Log cell count to check if cells are correctly selected
+           // Log cell count to check if cells are correctly selected
 
             function decodeHtml(html) {
                   var txt = document.createElement("textarea");
@@ -1102,14 +1494,68 @@
             tourPriceCells.forEach(cell => {
                 cell.textContent = data.tour_price;
             });
+
+       
+
         })
         .catch(error => console.error('Error fetching tour details:', error));
     }
 });
 
 
+let tourPricesProxy = new Proxy({}, {
+    set: function(target, property, value) {
+        // Set the property value
+        target[property] = value;
+        // Trigger the event listener when tourPrices changes
+        console.log("Tour Prices have been updated:");
+        console.log(`${property}: ${value}`);
+        return true;
+    }
+});
+// Create a Proxy for the tourPrices object
+
+// Function to calculate the total price
+document.getElementById('parkSelect').addEventListener('change', function() {
+  const childrenInputElement = document.getElementById('childrenInput');
+    const adultsInputElement = document.getElementById('adultsInput');
+    childrenInputElement.value = '0';
+    adultsInputElement.value = '0';
+});
+
+function calculateTotalPrice() {
+    const adultsCount = parseInt(document.getElementById('adultsInput').value);
+    const childrenCount = parseInt(document.getElementById('childrenInput').value);
+    const parkId = document.getElementById('parkSelect').value;
+    
+    const adultPrice = adultsCount === 1 ? parseInt(tourPricesProxy.tour_price.replace(/\D/g, ''), 10) :
+        adultsCount === 2 ? parseInt(tourPricesProxy.tour_price1.replace(/\D/g, ''), 10) :
+        adultsCount === 3 ? parseInt(tourPricesProxy.tour_price2.replace(/\D/g, ''), 10) :
+        adultsCount === 4 ? parseInt(tourPricesProxy.tour_price3.replace(/\D/g, ''), 10) :
+        adultsCount === 5 ? parseInt(tourPricesProxy.tour_price4.replace(/\D/g, ''), 10) :
+        adultsCount === 6 ? parseInt(tourPricesProxy.tour_price5.replace(/\D/g, ''), 10) :
+        0;
+
+    let childrenPrice;
+    if (parkId === '4') {
+        childrenPrice = 3.27 * childrenCount; // Update children price calculation for parkId = 4
+    } else {
+        childrenPrice = (parseInt(tourPricesProxy.tour_price.replace(/\D/g, ''), 10) / 2) * childrenCount; // Calculate children price
+    }
+
+    const totalPrice = adultPrice + childrenPrice;
+    console.log('Total Price:', totalPrice);
+
+    document.getElementById('totalPrice').innerHTML = 'Total Price: <strong>US $' + totalPrice.toFixed(2) + '</strong>';
+}
+
+// Event listener for input changes
+document.getElementById('adultsInput').addEventListener('input', calculateTotalPrice);
+document.getElementById('childrenInput').addEventListener('input', calculateTotalPrice);
+document.getElementById('tourSelect').addEventListener('change', calculateTotalPrice);
 
 
+  
 
 
       </script>
