@@ -164,6 +164,7 @@
                                                     console.error('Parks data is not available.');
                                                     return;
                                                 }
+                                                
                                                 const defaultParkId = parkSelect.value;
                                                     const defaultPark = parksData.find(park => park.id === defaultParkId);
                                                 // Get the selected park name and display it in the nametag element
@@ -174,6 +175,7 @@
                                                 // Get the selected park data
                                                 const parkId = this.value;
                                                 const selectedPark = parksData.find(park => park.id === parkId);
+                                                
 
                                                 // Update the options with the selected park data
                                                 const q1Option = document.getElementById('q1');
@@ -189,8 +191,28 @@
                                                 a1.innerHTML = selectedPark.a1;
                                                 a2.innerHTML = selectedPark.a2;
                                                 a3.innerHTML = selectedPark.a3;
+
+                                                const vehicaleSelect = document.getElementById('vehicale');
+                                                vehicaleSelect.innerHTML = '<option value="">--select--</option>';
+                                                
+                                               
+                                                  if (selectedPark) {
+                                                    if (selectedPark.v1 && selectedPark.vp1) {
+                                                        vehicaleSelect.innerHTML += `<option value="${selectedPark.vp1}">${selectedPark.v1} - ${"$"+selectedPark.vp1}</option>`;
+                                                    }
+                                                    if (selectedPark.v2 && selectedPark.vp2) {
+                                                        vehicaleSelect.innerHTML += `<option value="${selectedPark.vp2}">${selectedPark.v2} - ${"$"+selectedPark.vp2}</option>`;
+                                                    }
+                                                    if (selectedPark.v3 && selectedPark.vp3) {
+                                                        vehicaleSelect.innerHTML += `<option value="${selectedPark.vp3}">${selectedPark.v3} - ${"$"+selectedPark.vp3}</option>`;
+                                                    }
+                                                    // Repeat for other vehicles and their prices if available
+                                                }
+
+
                                                 const selectElement = document.getElementById('tabSelect');
                                         selectElement.dispatchEvent(new Event('change'));
+                                        vehicaleSelect.dispatchEvent(new Event('change'));
                                             });
                                         });
 
@@ -324,14 +346,11 @@
                          <div class="form-group" style="font-size: larger">
                           <label for="tourSelect">Choose the jeep</label>
                           <div class="select-holder">
-                              <select class="trip" style="height: 40px; width: 100%" id="Activities" disabled>
+                              <select class="trip" style="height: 40px; width: 100%" id="vehicale"  >
                                   <!-- Options will be dynamically added here -->
                                   <option value="">--select--</option>
 
-                                  <option value="Sigiriya hot air balloon">Mahindra Bolero</option>
-
-                                  <option value="Whale and dolphin watching">Toyota hilux</option>
-                                  <option value="Sigiriya village tour">Toyota land cruise</option>
+                                
                               </select>
                           </div>
                        </div>
