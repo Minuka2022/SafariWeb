@@ -104,8 +104,9 @@
                   <div
                     class="price"
                     style="text-align: center; font-size: xx-large"
+                    id="totalPrice"
                   >
-                    from <strong>US $979</strong>
+                    from Total Price: <strong>US $0</strong>
                   </div>
 
                   <ul
@@ -130,8 +131,32 @@
                           </select>
                         </div>
                       </div>
+
+
+                      <script>
+
+
+  
+
+        
+                
+
+          
+    </script>
+
+
+
+
+
+
                     <script>
                                         document.addEventListener('DOMContentLoaded', function() {
+                                          const childrenInputElement = document.getElementById('childrenInput');
+                                        const adultsInputElement = document.getElementById('adultsInput');
+
+                                          const tourId = this.value;
+                                          childrenInputElement.disabled = !tourId;
+                                          adultsInputElement.disabled = !tourId;
                                             // Fetch parks data when the page loads
                                             fetch('fetch_parks.php')
                                                 .then(response => response.json())
@@ -160,6 +185,7 @@
 
                                             // Add event listener for change event on parkSelect
                                             document.getElementById('parkSelect').addEventListener('change', function() {
+                                              
                                                 if (!parksData) {
                                                     console.error('Parks data is not available.');
                                                     return;
@@ -171,6 +197,7 @@
                                                 const selectedParkName = this.options[this.selectedIndex].textContent;
                                                 const nametag = document.getElementById('nametag');
                                                 nametag.textContent = selectedParkName;
+                                               
 
                                                 // Get the selected park data
                                                 const parkId = this.value;
@@ -264,6 +291,7 @@
 
                                               tourSelect.appendChild(option);
                                           });
+                                          tourSelect.dispatchEvent(new Event('change'));
                                       })
                                       .catch(error => console.error('Error fetching tours:', error));
                                   }
@@ -273,6 +301,7 @@
                           document.addEventListener('DOMContentLoaded', function() {
     // Event listener for park select change
                               document.getElementById('parkSelect').addEventListener('change', function() {
+                               
                                   const parkId = this.value;
                                   if (parkId) {
                                     
@@ -1408,17 +1437,29 @@
       
       <script>
 
+       
 
 
+        let tourPrices = {};
     // Event listener for tour select change
     document.getElementById('tourSelect').addEventListener('change', function() {
     const tourId = this.value;
+    const childrenInputElement = document.getElementById('childrenInput');
+    const adultsInputElement = document.getElementById('adultsInput');
+    childrenInputElement.disabled = !tourId;
+    adultsInputElement.disabled = !tourId;
     if (tourId) {
         // Fetch tour details based on the selected tour ID
         fetch('fetch_tour_details.php?tour_id=' + tourId)
         .then(response => response.json())
         .then(data => {
-            console.log(data); // Log received data to the console
+            tourPricesProxy.tour_price = data.tour_price;
+            tourPricesProxy.tour_price1 = data.tour_price1;
+            tourPricesProxy.tour_price2 = data.tour_price2;
+            tourPricesProxy.tour_price3 = data.tour_price3;
+            tourPricesProxy.tour_price4 = data.tour_price4;
+            tourPricesProxy.tour_price5 = data.tour_price5;
+            // console.log(data); // Log received data to the console
             // Update the table with tour details
             const tourNameCells = document.querySelectorAll('.tourName');
             const tourPriceCells = document.querySelectorAll('.tourPrice');
@@ -1430,7 +1471,7 @@
             const tour_details = document.getElementById('tour_details');
             const tinclude = document.getElementById('tinclude');
 
-            console.log(tinclude.length,tour_details.length); // Log cell count to check if cells are correctly selected
+           // Log cell count to check if cells are correctly selected
 
             function decodeHtml(html) {
                   var txt = document.createElement("textarea");
@@ -1458,14 +1499,68 @@
             tourPriceCells.forEach(cell => {
                 cell.textContent = data.tour_price;
             });
+
+       
+
         })
         .catch(error => console.error('Error fetching tour details:', error));
     }
 });
 
 
+let tourPricesProxy = new Proxy({}, {
+    set: function(target, property, value) {
+        // Set the property value
+        target[property] = value;
+        // Trigger the event listener when tourPrices changes
+        console.log("Tour Prices have been updated:");
+        console.log(`${property}: ${value}`);
+        return true;
+    }
+});
+// Create a Proxy for the tourPrices object
+
+// Function to calculate the total price
+document.getElementById('parkSelect').addEventListener('change', function() {
+  const childrenInputElement = document.getElementById('childrenInput');
+    const adultsInputElement = document.getElementById('adultsInput');
+    childrenInputElement.value = '0';
+    adultsInputElement.value = '0';
+});
+
+function calculateTotalPrice() {
+    const adultsCount = parseInt(document.getElementById('adultsInput').value);
+    const childrenCount = parseInt(document.getElementById('childrenInput').value);
+    const parkId = document.getElementById('parkSelect').value;
+    
+    const adultPrice = adultsCount === 1 ? parseInt(tourPricesProxy.tour_price.replace(/\D/g, ''), 10) :
+        adultsCount === 2 ? parseInt(tourPricesProxy.tour_price1.replace(/\D/g, ''), 10) :
+        adultsCount === 3 ? parseInt(tourPricesProxy.tour_price2.replace(/\D/g, ''), 10) :
+        adultsCount === 4 ? parseInt(tourPricesProxy.tour_price3.replace(/\D/g, ''), 10) :
+        adultsCount === 5 ? parseInt(tourPricesProxy.tour_price4.replace(/\D/g, ''), 10) :
+        adultsCount === 6 ? parseInt(tourPricesProxy.tour_price5.replace(/\D/g, ''), 10) :
+        0;
+
+    let childrenPrice;
+    if (parkId === '4') {
+        childrenPrice = 3.27 * childrenCount; // Update children price calculation for parkId = 4
+    } else {
+        childrenPrice = (parseInt(tourPricesProxy.tour_price.replace(/\D/g, ''), 10) / 2) * childrenCount; // Calculate children price
+    }
+
+    const totalPrice = adultPrice + childrenPrice;
+    console.log('Total Price:', totalPrice);
+
+    document.getElementById('totalPrice').innerHTML = 'Total Price: <strong>US $' + totalPrice.toFixed(2) + '</strong>';
+}
+
+// Event listener for input changes
+document.getElementById('adultsInput').addEventListener('input', calculateTotalPrice);
+document.getElementById('childrenInput').addEventListener('input', calculateTotalPrice);
+document.getElementById('tourSelect').addEventListener('change', calculateTotalPrice);
 
 
+  
 
 
       </script>
