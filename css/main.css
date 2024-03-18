@@ -1148,10 +1148,11 @@ blockquote.normal {
 
 .rev_slider_wrapper .banner-heading-sub {
 	font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	font-size: 26px;
+	font-size: 16px;
 	line-height: 30px;
 	color: #b0a377;
-	padding-right: 10px;
+	
+	text-align: left;
 }
 
 .rev_slider_wrapper .banner-heading-text {
@@ -6428,13 +6429,16 @@ table.table > tbody > tr .middle {
 	font-weight: 700;
 	color: #fff;
 	max-width: 1170px;
-	margin: 0 auto;
+	margin-top:auto;
+margin-right: auto;
+	margin-left:auto;
 	box-shadow: none;
 	background: #6b6957;
 	border: 10px solid #414141;
 	padding: 20px 10px;
 	margin-top: 5%;
 }
+
 
 .trip-form .holder {
 	padding: 0 5px;
