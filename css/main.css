@@ -1498,7 +1498,7 @@ blockquote.normal {
 }
 
 #banner-layout-fullwidth-all {
-	background-image: url('../img/kaudulla/elephants.jpg');
+	background-image: url('../img/gallery/Kaudulla-elephants.webp');
 }
 
 #banner-layout-leftsidebar {
@@ -1952,7 +1952,12 @@ blockquote.normal {
 }
 
 .banner.banner-inner .banner-text {
-	text-align: left;
+
+	top: auto;
+}
+
+.banner.banner-inner .banner-texts {
+
 	top: auto;
 }
 
