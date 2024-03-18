@@ -112,7 +112,7 @@
                     class="reviews-info"
                     style="text-align: left; font-size: larger"
                   >
-                    <!-- ... existing content ... -->
+                    
                   </ul>
 
                   <div class="btn-holder" style="text-align: left">
