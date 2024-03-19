@@ -255,7 +255,8 @@
                                         // Add event listener for change event on parkSelect
                                         document.getElementById('parkSelect').addEventListener('change', function() {
                                             const activitiesSelect = document.getElementById('Activities');
-                                            activitiesSelect.innerHTML = '<option value="0">--select--</option>' +
+                                            activitiesSelect.innerHTML =  '<option value="">--select--</option>' +
+                                            '<option value="0">--select--</option>' +
                                                                           '<option value="100">Sigiriya hot air balloon</option>' +
                                                                           '<option value="150">Whale and dolphin watching</option>' +
                                                                           '<option value="200">Sigiriya village tour</option>';
@@ -362,6 +363,7 @@
                               <select class="trip" style="height: 40px; width: 100%" id="Activities" disabled>
                                   <!-- Options will be dynamically added here -->
                                   <option value="">--select--</option>
+                                  <option value="0">--select--</option>
 
                               </select>
                           </div>
@@ -374,6 +376,7 @@
                               <select class="trip" style="height: 40px; width: 100%" id="vehicale"  >
                                   <!-- Options will be dynamically added here -->
                                   <option value="">--select--</option>
+
 
                                 
                               </select>
