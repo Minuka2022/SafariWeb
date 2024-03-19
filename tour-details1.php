@@ -242,22 +242,27 @@
 
 
                                           // Event listener for Activities disabled and enable 
-
-                                        function toggleActivitiesSelect(parkId) {
+                                          function toggleActivitiesSelect(parkId) {
                                             const activitiesSelect = document.getElementById('Activities');
                                             if (parkId === '2' || parkId === '3' || parkId === '4') {
                                                 activitiesSelect.disabled = false; // Enable the select element
                                             } else {
+                                                activitiesSelect.selectedIndex = 0;
                                                 activitiesSelect.disabled = true; // Disable the select element
                                             }
                                         }
 
                                         // Add event listener for change event on parkSelect
                                         document.getElementById('parkSelect').addEventListener('change', function() {
+                                            const activitiesSelect = document.getElementById('Activities');
+                                            activitiesSelect.innerHTML = '<option value="0">--select--</option>' +
+                                                                          '<option value="100">Sigiriya hot air balloon</option>' +
+                                                                          '<option value="150">Whale and dolphin watching</option>' +
+                                                                          '<option value="200">Sigiriya village tour</option>';
                                             const parkId = this.value;
                                             if (parkId) {
                                                 toggleActivitiesSelect(parkId);
-                                            }
+                                            }activitiesSelect.dispatchEvent(new Event('change'));
                                         });
 
 
@@ -358,10 +363,6 @@
                                   <!-- Options will be dynamically added here -->
                                   <option value="">--select--</option>
 
-                                  <option value="Sigiriya hot air balloon">Sigiriya hot air balloon</option>
-
-                                  <option value="Whale and dolphin watching">Whale and dolphin watching</option>
-                                  <option value="Sigiriya village tour">Sigiriya village tour</option>
                               </select>
                           </div>
                        </div>
@@ -1519,14 +1520,24 @@ let tourPricesProxy = new Proxy({}, {
 document.getElementById('parkSelect').addEventListener('change', function() {
   const childrenInputElement = document.getElementById('childrenInput');
     const adultsInputElement = document.getElementById('adultsInput');
+    
     childrenInputElement.value = '0';
     adultsInputElement.value = '0';
 });
-
 function calculateTotalPrice() {
     const adultsCount = parseInt(document.getElementById('adultsInput').value);
     const childrenCount = parseInt(document.getElementById('childrenInput').value);
     const parkId = document.getElementById('parkSelect').value;
+    let activityPrice = 0; // Initialize activity price to 0
+    let vehicalePrice = 0; // Initialize vehicle price to 0
+
+    // Get the prices of selected activity and vehicle if they are not '--select--'
+    if (document.getElementById('Activities').value !== '') {
+        activityPrice = parseInt(document.getElementById('Activities').value);
+    }
+    if (document.getElementById('vehicale').value !== '') {
+        vehicalePrice = parseInt(document.getElementById('vehicale').value);
+    }
     
     const adultPrice = adultsCount === 1 ? parseInt(tourPricesProxy.tour_price.replace(/\D/g, ''), 10) :
         adultsCount === 2 ? parseInt(tourPricesProxy.tour_price1.replace(/\D/g, ''), 10) :
@@ -1543,7 +1554,7 @@ function calculateTotalPrice() {
         childrenPrice = (parseInt(tourPricesProxy.tour_price.replace(/\D/g, ''), 10) / 2) * childrenCount; // Calculate children price
     }
 
-    const totalPrice = adultPrice + childrenPrice;
+    const totalPrice = adultPrice + childrenPrice + activityPrice + vehicalePrice;
     console.log('Total Price:', totalPrice);
 
     document.getElementById('totalPrice').innerHTML = 'Total Price: <strong>US $' + totalPrice.toFixed(2) + '</strong>';
@@ -1553,7 +1564,8 @@ function calculateTotalPrice() {
 document.getElementById('adultsInput').addEventListener('input', calculateTotalPrice);
 document.getElementById('childrenInput').addEventListener('input', calculateTotalPrice);
 document.getElementById('tourSelect').addEventListener('change', calculateTotalPrice);
-
+document.getElementById('Activities').addEventListener('change', calculateTotalPrice); // Add event listener for Activities select
+document.getElementById('vehicale').addEventListener('change', calculateTotalPrice);
 
   
 
