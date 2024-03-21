@@ -149,7 +149,12 @@
                                           const childrenInputElement = document.getElementById('childrenInput');
                                         const adultsInputElement = document.getElementById('adultsInput');
 
-                                          const tourId = this.value;
+                                          
+                                         
+
+                                          const params = new URLSearchParams(window.location.search);
+                                          const parkid = params.get('parkId');
+                                          const tourId = params.get('tourId');
                                           childrenInputElement.disabled = !tourId;
                                           adultsInputElement.disabled = !tourId;
                                             // Fetch parks data when the page loads
@@ -170,11 +175,17 @@
                                                     });
 
                                                     // Get the default selected park
-                                                  
+                                                     // Auto-select the option with the same value as parkId
+                                                      if (parkid) {
+                                                          parkSelect.value = parkid;
+                                                          parkSelect.dispatchEvent(new Event('change'));
+                                                      }
+                                                                                            
 
                                                     // Set q1 content immediately after populating parkSelect
                                                     const q1Option = document.getElementById('q1');
                                                     q1Option.textContent = defaultPark.q1;
+                                                    
                                                 })
                                                 .catch(error => console.error('Error fetching parks:', error));
 
@@ -235,6 +246,7 @@
                                                 const selectElement = document.getElementById('tabSelect');
                                         selectElement.dispatchEvent(new Event('change'));
                                         vehicaleSelect.dispatchEvent(new Event('change'));
+                                        
                                             });
                                         });
 
@@ -271,6 +283,10 @@
                               // Event listener for park select change
                               document.getElementById('parkSelect').addEventListener('change', function() {
                                   const parkId = this.value;
+                                  const params = new URLSearchParams(window.location.search);
+                                         
+                                          const tourid = params.get('tourId');
+                                         
                                   if (parkId) {
 
 
@@ -292,6 +308,16 @@
 
                                               tourSelect.appendChild(option);
                                           });
+                                           // Auto-select the option with the same value as parkId
+                                                if (tourid) {
+                                                  tourSelect.value = tourid;
+
+                                                    // Manually trigger the change event to update the UI
+                                                    tourSelect.dispatchEvent(new Event('change'));
+                                                }
+
+                                          childrenInputElement.disabled = !tourid;
+                                          adultsInputElement.disabled = !tourid;
                                           tourSelect.dispatchEvent(new Event('change'));
                                       })
                                       .catch(error => console.error('Error fetching tours:', error));
