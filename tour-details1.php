@@ -499,6 +499,25 @@
                                   </script>
 
 
+ <div class="form-group" style="font-size: larger">
+    <label for="notesInput">Full name</label>
+    <input class="form-control" id="notesInput" ></textarea>
+</div>
+
+
+ <div class="form-group" style="font-size: larger">
+    <label for="notesInput">Contact</label>
+    <input class="form-control" id="notesInput" ></textarea>
+</div>
+
+
+ <div class="form-group" style="font-size: larger">
+    <label for="notesInput">Email</label>
+    <input class="form-control" id="notesInput" ></textarea>
+</div>
+
+
+
           <div class="form-group" style="font-size: larger">
     <label for="notesInput">Notes</label>
     <textarea class="form-control" id="notesInput" style="height: 200px; resize: none;"></textarea>
@@ -509,7 +528,7 @@
                       <!-- Removed Total Price section -->
 
                       <div style="text-align: center ;  margin-top:90px;">
-                        <button type="submit" id="emailjs" class="btn btn-lg btn-info">
+                        <button type="submit" class="btn btn-lg btn-info">
                           BOOK NOW
                         </button>
                       </div>
@@ -1612,6 +1631,7 @@ function calculateTotalPrice() {
         adultsCount === 4 ? parseInt(tourPricesProxy.tour_price3.replace(/\D/g, ''), 10) :
         adultsCount === 5 ? parseInt(tourPricesProxy.tour_price4.replace(/\D/g, ''), 10) :
         adultsCount === 6 ? parseInt(tourPricesProxy.tour_price5.replace(/\D/g, ''), 10) :
+        
         0;
 
     let childrenPrice;
