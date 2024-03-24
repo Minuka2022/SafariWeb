@@ -149,7 +149,12 @@
                                           const childrenInputElement = document.getElementById('childrenInput');
                                         const adultsInputElement = document.getElementById('adultsInput');
 
-                                          const tourId = this.value;
+                                          
+                                         
+
+                                          const params = new URLSearchParams(window.location.search);
+                                          const parkid = params.get('parkId');
+                                          const tourId = params.get('tourId');
                                           childrenInputElement.disabled = !tourId;
                                           adultsInputElement.disabled = !tourId;
                                             // Fetch parks data when the page loads
@@ -170,11 +175,17 @@
                                                     });
 
                                                     // Get the default selected park
-                                                  
+                                                     // Auto-select the option with the same value as parkId
+                                                      if (parkid) {
+                                                          parkSelect.value = parkid;
+                                                          parkSelect.dispatchEvent(new Event('change'));
+                                                      }
+                                                                                            
 
                                                     // Set q1 content immediately after populating parkSelect
                                                     const q1Option = document.getElementById('q1');
                                                     q1Option.textContent = defaultPark.q1;
+                                                    
                                                 })
                                                 .catch(error => console.error('Error fetching parks:', error));
 
@@ -214,28 +225,39 @@
                                                 a2.innerHTML = selectedPark.a2;
                                                 a3.innerHTML = selectedPark.a3;
 
-                                                const vehicaleSelect = document.getElementById('vehicale');
-                                                vehicaleSelect.innerHTML = '<option value="">--select--</option>';
+                                                // const vehicaleSelect = document.getElementById('vehicale');
+                                                // vehicaleSelect.innerHTML = '<option value="">--select--</option>';
                                                 
                                                
-                                                  if (selectedPark) {
-                                                    if (selectedPark.v1 && selectedPark.vp1) {
-                                                        vehicaleSelect.innerHTML += `<option value="${selectedPark.vp1}">${selectedPark.v1} - ${"$"+selectedPark.vp1}</option>`;
-                                                    }
-                                                    if (selectedPark.v2 && selectedPark.vp2) {
-                                                        vehicaleSelect.innerHTML += `<option value="${selectedPark.vp2}">${selectedPark.v2} - ${"$"+selectedPark.vp2}</option>`;
-                                                    }
-                                                    if (selectedPark.v3 && selectedPark.vp3) {
-                                                        vehicaleSelect.innerHTML += `<option value="${selectedPark.vp3}">${selectedPark.v3} - ${"$"+selectedPark.vp3}</option>`;
-                                                    }
-                                                    // Repeat for other vehicles and their prices if available
-                                                }
+                                                //   if (selectedPark) {
+                                                //     if (selectedPark.v1 && selectedPark.vp1) {
+                                                //         vehicaleSelect.innerHTML += `<option value="${selectedPark.vp1}">${selectedPark.v1} - ${"$"+selectedPark.vp1}</option>`;
+                                                //     }
+                                                //     if (selectedPark.v2 && selectedPark.vp2) {
+                                                //         vehicaleSelect.innerHTML += `<option value="${selectedPark.vp2}">${selectedPark.v2} - ${"$"+selectedPark.vp2}</option>`;
+                                                //     }
+                                                //     if (selectedPark.v3 && selectedPark.vp3) {
+                                                //         vehicaleSelect.innerHTML += `<option value="${selectedPark.vp3}">${selectedPark.v3} - ${"$"+selectedPark.vp3}</option>`;
+                                                //     }
+                                                //     // Repeat for other vehicles and their prices if available
+                                                // }
 
 
                                                 const selectElement = document.getElementById('tabSelect');
                                         selectElement.dispatchEvent(new Event('change'));
+                                        const vehicaleSelect = document.getElementById('vehicale');
+                                        vehicaleSelect.innerHTML = '<option value="">--select--</option>';
                                         vehicaleSelect.dispatchEvent(new Event('change'));
+                                        
+                                        
                                             });
+
+
+
+
+
+
+
                                         });
 
 
@@ -271,6 +293,10 @@
                               // Event listener for park select change
                               document.getElementById('parkSelect').addEventListener('change', function() {
                                   const parkId = this.value;
+                                  const params = new URLSearchParams(window.location.search);
+                                         
+                                          const tourid = params.get('tourId');
+                                         
                                   if (parkId) {
 
 
@@ -279,6 +305,8 @@
                                       fetch('fetch_tours.php?park_id=' + parkId)
                                       .then(response => response.json())
                                       .then(data => {
+                                        
+
                                           const tourSelect = document.getElementById('tourSelect');
 
                                         
@@ -292,12 +320,32 @@
 
                                               tourSelect.appendChild(option);
                                           });
+                                           // Auto-select the option with the same value as parkId
+                                                if (tourid) {
+                                                  tourSelect.value = tourid;
+
+                                                    // Manually trigger the change event to update the UI
+                                                    tourSelect.dispatchEvent(new Event('change'));
+                                                }
+                                               
+                                               
+                                                const childrenInputElement = document.getElementById('childrenInput');
+                                        const adultsInputElement = document.getElementById('adultsInput');
+
+
+                                          childrenInputElement.disabled = !tourid;
+                                          adultsInputElement.disabled = !tourid;
                                           tourSelect.dispatchEvent(new Event('change'));
                                       })
                                       .catch(error => console.error('Error fetching tours:', error));
                                   }
-                              });
-                          
+                              });  
+
+
+
+
+
+
 
                           document.addEventListener('DOMContentLoaded', function() {
     // Event listener for park select change
@@ -1499,8 +1547,24 @@
                 cell.textContent = data.tour_price;
             });
 
-       
+            const vehicaleSelect = document.getElementById('vehicale');
+            vehicaleSelect.innerHTML = '<option value="">--select--</option>';
 
+          if (data) {
+              if (data.v1 && data.vp1) {
+                  vehicaleSelect.innerHTML += `<option value="${data.vp1}">${data.v1} - ${"$"+data.vp1}</option>`;
+              }
+              if (data.v2 && data.vp2) {
+                  vehicaleSelect.innerHTML += `<option value="${data.vp2}">${data.v2} - ${"$"+data.vp2}</option>`;
+              }
+              if (data.v3 && data.vp3) {
+                  vehicaleSelect.innerHTML += `<option value="${data.vp3}">${data.v3} - ${"$"+data.vp3}</option>`;
+              }
+              // Repeat for other vehicles and their prices if available
+          }
+
+
+          vehicaleSelect.dispatchEvent(new Event('change'));
         })
         .catch(error => console.error('Error fetching tour details:', error));
     }
