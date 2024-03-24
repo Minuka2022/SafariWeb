@@ -504,6 +504,13 @@
     <input class="form-control" id="notesInput" ></textarea>
 </div>
 
+
+ <div class="form-group" style="font-size: larger">
+    <label for="notesInput">Contact</label>
+    <input class="form-control" id="notesInput" ></textarea>
+</div>
+
+
  <div class="form-group" style="font-size: larger">
     <label for="notesInput">Email</label>
     <input class="form-control" id="notesInput" ></textarea>
