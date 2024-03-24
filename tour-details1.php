@@ -48,6 +48,9 @@
     />
     <!-- include main css -->
     <link media="all" rel="stylesheet" href="css/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+
   </head>
   <body class="default-page">
     <div class="preloader" id="pageLoad">
@@ -105,6 +108,7 @@
                     class="price"
                     style="text-align: center; font-size: xx-large"
                     id="totalPrice"
+                    name="totalPrice"
                   >
                     from Total Price: <strong>US $0</strong>
                   </div>
@@ -125,6 +129,7 @@
                           <select
                             class="trip"
                             id="parkSelect"
+                            name="parkSelect"
                             style="height: 40px; width: 100%"
                           >
                           <option value="">--select--</option>
@@ -398,7 +403,7 @@
                         <div class="form-group" style="font-size: larger">
                             <label for="tourSelect">Select Tour time :</label>
                             <div class="select-holder">
-                                <select class="trip" id="tourSelect" style="height: 40px; width: 100%">
+                                <select class="trip" id="tourSelect" name="tourSelect" style="height: 40px; width: 100%">
                                     <!-- Options will be dynamically added here -->
                                     <option value="">--select--</option>
                                 </select>
@@ -408,7 +413,7 @@
                         <div class="form-group" style="font-size: larger">
                           <label for="tourSelect">Activities</label>
                           <div class="select-holder">
-                              <select class="trip" style="height: 40px; width: 100%" id="Activities" disabled>
+                              <select class="trip" style="height: 40px; width: 100%" id="Activities" name="Activities" disabled>
                                   <!-- Options will be dynamically added here -->
                                   <option value="">--select--</option>
                                   <option value="0">--select--</option>
@@ -421,7 +426,7 @@
                          <div class="form-group" style="font-size: larger">
                           <label for="tourSelect">Choose the jeep</label>
                           <div class="select-holder">
-                              <select class="trip" style="height: 40px; width: 100%" id="vehicale"  >
+                              <select class="trip" style="height: 40px; width: 100%" id="vehicale" name="vehicale" >
                                   <!-- Options will be dynamically added here -->
                                   <option value="">--select--</option>
 
@@ -440,6 +445,7 @@
                           type="date"
                           class="form-control"
                           id="dateInput"
+                          name="dateInput"
                         />
                       </div>
                           
@@ -449,6 +455,7 @@
                                     type="number"
                                     class="form-control"
                                     id="adultsInput"
+                                    name="adultsInput"
                                     min="0" max="6"
                                     maxlength="1"
                                     oninput="limitTotal(this)"
@@ -460,6 +467,7 @@
                                   <label for="childrenInput">Enter Children Count:</label>
                                   <input
                                     type="number"
+                                    name="childrenInput"
                                     class="form-control"
                                     id="childrenInput"
                                     min="0" max="6"
@@ -501,26 +509,26 @@
 
  <div class="form-group" style="font-size: larger">
     <label for="notesInput">Full name</label>
-    <input class="form-control" id="notesInput" ></textarea>
+    <input class="form-control" id="NameInput" name="NameInput">
 </div>
 
 
  <div class="form-group" style="font-size: larger">
     <label for="notesInput">Contact</label>
-    <input class="form-control" id="notesInput" ></textarea>
+    <input class="form-control" id="ContactInput" name="ContactInput">
 </div>
 
 
  <div class="form-group" style="font-size: larger">
     <label for="notesInput">Email</label>
-    <input class="form-control" id="notesInput" ></textarea>
+    <input class="form-control" id="EmailInput" name="EmailInput">
 </div>
 
 
 
           <div class="form-group" style="font-size: larger">
     <label for="notesInput">Notes</label>
-    <textarea class="form-control" id="notesInput" style="height: 200px; resize: none;"></textarea>
+    <textarea class="form-control" id="notesInput" name="notesInput" style="height: 200px; resize: none;"></textarea>
 </div>
 
 
@@ -528,7 +536,7 @@
                       <!-- Removed Total Price section -->
 
                       <div style="text-align: center ;  margin-top:90px;">
-                        <button type="submit" class="btn btn-lg btn-info">
+                        <button type="submit" id="emailjs" name="emailjs" class="btn btn-lg btn-info">
                           BOOK NOW
                         </button>
                       </div>
@@ -1667,6 +1675,7 @@ document.getElementById('vehicale').addEventListener('change', calculateTotalPri
         ><i class="icon-arrow-down"></i
       ></a>
     </div>
+    <script src="email.js"></script>
     <!-- jquery library -->
     <script src="vendors/jquery/jquery-2.1.4.min.js"></script>
     <!-- external scripts -->
