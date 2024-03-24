@@ -509,7 +509,7 @@
                       <!-- Removed Total Price section -->
 
                       <div style="text-align: center ;  margin-top:90px;">
-                        <button type="submit" class="btn btn-lg btn-info">
+                        <button type="submit" id="emailjs" class="btn btn-lg btn-info">
                           BOOK NOW
                         </button>
                       </div>

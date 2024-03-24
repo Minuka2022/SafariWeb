@@ -1499,7 +1499,7 @@
                 cell.textContent = data.tour_price;
             });
 
-       
+            
 
         })
         .catch(error => console.error('Error fetching tour details:', error));
