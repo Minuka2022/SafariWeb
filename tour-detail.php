@@ -499,6 +499,18 @@
                                   </script>
 
 
+ <div class="form-group" style="font-size: larger">
+    <label for="notesInput">Full name</label>
+    <input class="form-control" id="notesInput" ></textarea>
+</div>
+
+ <div class="form-group" style="font-size: larger">
+    <label for="notesInput">Email</label>
+    <input class="form-control" id="notesInput" ></textarea>
+</div>
+
+
+
           <div class="form-group" style="font-size: larger">
     <label for="notesInput">Notes</label>
     <textarea class="form-control" id="notesInput" style="height: 200px; resize: none;"></textarea>
