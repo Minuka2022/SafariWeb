@@ -123,6 +123,26 @@
                   <div class="btn-holder" style="text-align: left">
                     <!-- Start of the form -->
                     <form>
+
+                    
+ <div class="form-group" style="font-size: larger">
+    <label for="notesInput">Full name</label>
+    <input class="form-control" id="NameInput" name="NameInput">
+</div>
+
+
+ <div class="form-group" style="font-size: larger">
+    <label for="notesInput">Contact</label>
+    <input class="form-control" id="ContactInput" name="ContactInput">
+</div>
+
+
+ <div class="form-group" style="font-size: larger">
+    <label for="notesInput">Email</label>
+    <input class="form-control" id="EmailInput" name="EmailInput">
+</div>
+
+
                       <div class="form-group" style="font-size: larger">
                         <label for="adventure">Select Your National Park</label>
                         <div class="select-holder" >
@@ -140,13 +160,6 @@
 
                       <script>
 
-
-  
-
-        
-                
-
-          
     </script>
 
                     <script>
@@ -507,22 +520,6 @@
                                   </script>
 
 
- <div class="form-group" style="font-size: larger">
-    <label for="notesInput">Full name</label>
-    <input class="form-control" id="NameInput" name="NameInput">
-</div>
-
-
- <div class="form-group" style="font-size: larger">
-    <label for="notesInput">Contact</label>
-    <input class="form-control" id="ContactInput" name="ContactInput">
-</div>
-
-
- <div class="form-group" style="font-size: larger">
-    <label for="notesInput">Email</label>
-    <input class="form-control" id="EmailInput" name="EmailInput">
-</div>
 
 
 
