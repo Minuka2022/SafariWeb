@@ -160,9 +160,32 @@
 
                       <script>
 
+  // Retrieve stored values and fill the inputs when the tour-details1.php page loads
+                  document.addEventListener('DOMContentLoaded', function () {
+                    // Get the stored values from localStorage
+                    var storedFullName = localStorage.getItem('fullName');
+                    var storedEmail = localStorage.getItem('email');
+                    var storedContactNumber = localStorage.getItem('contactNumber');
+
+                    // Fill the inputs with the stored values
+                    document.getElementById('NameInput').value = storedFullName;
+                    document.getElementById('EmailInput').value = storedEmail;
+                    document.getElementById('ContactInput').value = storedContactNumber;
+
+                    // Clear the stored values from localStorage
+                    localStorage.removeItem('fullName');
+                    localStorage.removeItem('email');
+                    localStorage.removeItem('contactNumber');
+                  });
+
     </script>
 
                     <script>
+                      
+
+
+
+
                                         document.addEventListener('DOMContentLoaded', function() {
                                           const childrenInputElement = document.getElementById('childrenInput');
                                         const adultsInputElement = document.getElementById('adultsInput');

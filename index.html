@@ -560,7 +560,7 @@
             <div class="center-text">
               <form class="trip-form" style="border-radius:15px;">
                 <fieldset>
-            
+                
 
                   <br />
                   <div class="holder">
@@ -568,8 +568,8 @@
                     <div class="input-holder">
                       <input
                         type="text"
-                        id="adults"
-                        name="adults"
+                        id="sname"
+                        
                         placeholder="Enter full name"
                         style="
                           width: 100%;
@@ -588,8 +588,8 @@
                     <div class="input-holder">
                       <input
                         type="text"
-                        id="child"
-                        name="child"
+                        id="sEmail"
+                       
                         placeholder="Enter Email"
                         style="
                           width: 100%;
@@ -608,8 +608,8 @@
                     <div class="input-holder">
                       <input
                         type="text"
-                        id="child"
-                        name="child"
+                        id="sContact"
+                       
                         placeholder="Enter contact number"
                         style="
                           width: 100%;
@@ -631,6 +631,7 @@
                     <input
                       class="btn btn-trip"
                       type="submit"
+                      id="ssubmit"
                       value="Proceed"
                       style="
                         width: 100%;
@@ -645,6 +646,25 @@
               </form>
             </div>
           </div>
+
+          <script>
+             document.getElementById('ssubmit').addEventListener('click', function (e) {
+                  e.preventDefault(); // Prevent the default form submission
+
+                  // Get the input values
+                  var fullName = document.getElementById('sname').value;
+                  var email = document.getElementById('sEmail').value;
+                  var contactNumber = document.getElementById('sContact').value;
+
+                  // Store the input values in localStorage
+                  localStorage.setItem('fullName', fullName);
+                  localStorage.setItem('email', email);
+                  localStorage.setItem('contactNumber', contactNumber);
+
+                  // Redirect to tour-details1.php
+                  window.location.href = 'tour-details1.php';
+                });
+         </script>
 
           <!-- special block -->
           <aside class="special-block">
