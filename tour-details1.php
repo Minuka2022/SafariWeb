@@ -492,7 +492,7 @@
                                     class="form-control"
                                     id="adultsInput"
                                     name="adultsInput"
-                                    min="0" max="6"
+                                    min="0" max="7"
                                     maxlength="1"
                                     oninput="limitTotal(this)"
                                     onload="limitTotal(this)"
@@ -506,7 +506,7 @@
                                     name="childrenInput"
                                     class="form-control"
                                     id="childrenInput"
-                                    min="0" max="6"
+                                    min="0" max="7"
                                     oninput="limitTotal(this)"
                                     onload="limitTotal(this)"
                                   />
@@ -533,11 +533,11 @@
                                     var childrenCount = parseInt(document.getElementById('childrenInput').value);
                                     
                                     // Dynamically adjust maximum limit for adults input
-                                    var adultsMax = 6 - childrenCount;
+                                    var adultsMax = 7 - childrenCount;
                                     document.getElementById('adultsInput').max = adultsMax;
                                     
                                     // Dynamically adjust maximum limit for children input
-                                    var childrenMax = 6 - adultsCount;
+                                    var childrenMax = 7 - adultsCount;
                                     document.getElementById('childrenInput').max = childrenMax;
                                   }
                                   </script>
@@ -1084,6 +1084,37 @@
                   </ul>
 
 
+                  <ul class="detail-accordion accordion-v2">
+                    <li class="active">
+                      <a href="#">
+                        <strong class="title">PAX 7</strong>
+                      </a>
+                      <div class="slide">
+                        <div class="slide-holder">
+                          <!-- Start of the table -->
+                          <table style="width: 100%; font-size: 1.2em">
+                            <thead>
+                              <tr>
+                                <th style="padding: 5px">Tour Type</th>
+                                <th style="padding: 5px">Price</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <!-- Add a row for each tour type and its price -->
+                                <tr>
+                               <td style="padding: 5px" class="tourName"></td>
+                               <td style="padding: 5px" class="tourPrice6"></td>
+                             </tr>
+                              <!-- Add more rows as necessary -->
+                            </tbody>
+                          </table>
+                          <!-- End of the table -->
+                        </div>
+                      </div>
+                    </li>
+                    <!-- Add more list items for other PAX values -->
+                  </ul>
+
 
 
                 </div>
@@ -1117,7 +1148,7 @@
             tourPricesProxy.tour_price2 = data.tour_price2;
             tourPricesProxy.tour_price3 = data.tour_price3;
             tourPricesProxy.tour_price4 = data.tour_price4;
-            tourPricesProxy.tour_price5 = data.tour_price5;
+            tourPricesProxy.tour_price6 = data.tour_price6;
             // console.log(data); // Log received data to the console
             // Update the table with tour details
             const tourNameCells = document.querySelectorAll('.tourName');
@@ -1126,7 +1157,8 @@
             const tourPriceCell2 = document.querySelectorAll('.tourPrice2')[0]; // Access the first element from the NodeList
             const tourPriceCell3 = document.querySelectorAll('.tourPrice3')[0]; // Access the first element from the NodeList
             const tourPriceCell4 = document.querySelectorAll('.tourPrice4')[0]; // Access the first element from the NodeList
-            const tourPriceCell5 = document.querySelectorAll('.tourPrice5')[0]; // Access the first element from the NodeList
+            const tourPriceCell5 = document.querySelectorAll('.tourPrice5')[0];
+            const tourPriceCell6 = document.querySelectorAll('.tourPrice6')[0]; // Access the first element from the NodeList
             const tour_details = document.getElementById('tour_details');
             const tinclude = document.getElementById('tinclude');
 
@@ -1149,6 +1181,7 @@
             tourPriceCell3.textContent = data.tour_price3;
             tourPriceCell4.textContent = data.tour_price4;
             tourPriceCell5.textContent = data.tour_price5;
+            tourPriceCell6.textContent = data.tour_price6;
             tour_details.innerHTML = decodedHtml;
             tinclude.innerHTML = decodedHtml1;
 
@@ -1224,6 +1257,7 @@ function calculateTotalPrice() {
         adultsCount === 4 ? parseInt(tourPricesProxy.tour_price3.replace(/\D/g, ''), 10) :
         adultsCount === 5 ? parseInt(tourPricesProxy.tour_price4.replace(/\D/g, ''), 10) :
         adultsCount === 6 ? parseInt(tourPricesProxy.tour_price5.replace(/\D/g, ''), 10) :
+        adultsCount === 7 ? parseInt(tourPricesProxy.tour_price6.replace(/\D/g, ''), 10) :
         
         0;
 
