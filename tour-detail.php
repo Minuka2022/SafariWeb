@@ -297,9 +297,9 @@
                                             const activitiesSelect = document.getElementById('Activities');
                                             activitiesSelect.innerHTML =  '<option value="">--select--</option>' +
                                             '<option value="0">--select--</option>' +
-                                                                          '<option value="100">Sigiriya hot air balloon</option>' +
-                                                                          '<option value="150">Whale and dolphin watching</option>' +
-                                                                          '<option value="200">Sigiriya village tour</option>';
+                                                                          '<option value="230">Sigiriya hot air balloon</option>' +
+                                                                          '<option value="45">Whale and dolphin watching</option>' +
+                                                                          '<option value="20">Sigiriya village tour</option>';
                                             const parkId = this.value;
                                             if (parkId) {
                                                 toggleActivitiesSelect(parkId);
