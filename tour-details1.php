@@ -69,6 +69,40 @@
             $("#footer").load("footer.html");
           });
         </script>
+                        <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                // Array of image URLs
+                var imageUrls = [
+                  "img/Tour-detail-imgs/1.jpg",
+                  "img/Tour-detail-imgs/2.jpg",
+                  "img/Tour-detail-imgs/3.webp",
+                  "img/Tour-detail-imgs/4.webp",
+                  "img/Tour-detail-imgs/5.webp",
+                  "img/Tour-detail-imgs/6.webp",
+                  "img/Tour-detail-imgs/7.webp",
+                  "img/Tour-detail-imgs/8.webp",
+                  "img/Tour-detail-imgs/9.webp",
+                  "img/Tour-detail-imgs/10.webp",
+                  "img/Tour-detail-imgs/11.webp",
+                ];
+
+                // Shuffle the image URLs
+                function shuffle(array) {
+                  for (var i = array.length - 1; i > 0; i--) {
+                    var j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                  }
+                  return array;
+                }
+
+                shuffle(imageUrls);
+
+                // Update the image sources
+                document.getElementById("image1").src = imageUrls[0];
+                document.getElementById("image2").src = imageUrls[1];
+              });
+
+                </script>
         <!-- main container -->
         <main id="main">
           <!-- main tour information -->
@@ -80,7 +114,8 @@
                   <div class="slide">
                     <div class="bg-stretch">
                       <img
-                        src="img/generic/img-17.jpg"
+                      id="image1"
+                      
                         alt="image descriprion"
                         height="1104"
                         width="966"
@@ -90,7 +125,7 @@
                   <div class="slide">
                     <div class="bg-stretch">
                       <img
-                        src="img/generic/img-07.jpg"
+                      id="image2"
                         alt="image descriprion"
                         height="1104"
                         width="966"
@@ -318,7 +353,7 @@
                                         // Add event listener for change event on parkSelect
                                         document.getElementById('parkSelect').addEventListener('change', function() {
                                             const activitiesSelect = document.getElementById('Activities');
-                                            activitiesSelect.innerHTML =  '<option value="">--select--</option>' +
+                                            activitiesSelect.innerHTML =  '<option value="0">--select--</option>' +
                                             '<option value="0">--select--</option>' +
                                                                           '<option value="100">Sigiriya hot air balloon</option>' +
                                                                           '<option value="150">Whale and dolphin watching</option>' +
@@ -352,7 +387,7 @@
 
                                         
                                           // Clear existing options
-                                          tourSelect.innerHTML = '<option value="">--Select The Park--</option>';
+                                          tourSelect.innerHTML = '<option value="0">--Select The Park--</option>';
                                           // Populate tour select dropdown with fetched data
                                           data.forEach(tour => {
                                               const option = document.createElement('option');
@@ -1193,7 +1228,7 @@
             });
 
             const vehicaleSelect = document.getElementById('vehicale');
-            vehicaleSelect.innerHTML = '<option value="">--select--</option>';
+            vehicaleSelect.innerHTML = '<option value="0">--select--</option>';
 
           if (data) {
               if (data.v1 && data.vp1) {
