@@ -6,6 +6,32 @@ $(document).ready(function() {
     $("#emailjs").on("click", function (e) {
         e.preventDefault();
         
+        // Check if required fields are filled out
+        if (isValidForm()) {
+            // If validation passes, proceed to send emails
+            sendEmails();
+        } else {
+            // Show alert if required fields are empty
+            alert('Please fill out all required fields.');
+        }
+    });
+
+    // Function to check if required fields are filled out
+    function isValidForm() {
+        // Add conditions to check if the required fields are not empty or equal to 0
+        if ($("#parkSelect option:selected").val() === "" || $("#parkSelect option:selected").val() === "0" ||
+            $("#tourSelect option:selected").val() === "" || $("#tourSelect option:selected").val() === "0" ||
+            $("#adultsInput").val() === "" || $("#adultsInput").val() === "0" ||
+            // $("#childrenInput").val() === "" || $("#childrenInput").val() === "0" ||
+            $("#vehicale option:selected").val() === "" ||
+            $("#dateInput").val() === "") {
+            return false;
+        }
+        return true;
+    }
+
+    // Function to send emails
+    function sendEmails() {
         const formData = {
             totalPrice: $("#totalPrice").text(),
             park: $("#parkSelect option:selected").text(),
@@ -42,5 +68,5 @@ $(document).ready(function() {
                 // Show error message in a popup
                 alert('Error sending email to yourself: ' + error);
             });
-    });
+    }
 });
