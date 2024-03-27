@@ -69,6 +69,40 @@
             $("#footer").load("footer.html");
           });
         </script>
+                        <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                // Array of image URLs
+                var imageUrls = [
+                  "img/Tour-detail-imgs/1.jpg",
+                  "img/Tour-detail-imgs/2.jpg",
+                  "img/Tour-detail-imgs/3.webp",
+                  "img/Tour-detail-imgs/4.webp",
+                  "img/Tour-detail-imgs/5.webp",
+                  "img/Tour-detail-imgs/6.webp",
+                  "img/Tour-detail-imgs/7.webp",
+                  "img/Tour-detail-imgs/8.webp",
+                  "img/Tour-detail-imgs/9.webp",
+                  "img/Tour-detail-imgs/10.webp",
+                  "img/Tour-detail-imgs/11.webp",
+                ];
+
+                // Shuffle the image URLs
+                function shuffle(array) {
+                  for (var i = array.length - 1; i > 0; i--) {
+                    var j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                  }
+                  return array;
+                }
+
+                shuffle(imageUrls);
+
+                // Update the image sources
+                document.getElementById("image1").src = imageUrls[0];
+                document.getElementById("image2").src = imageUrls[1];
+              });
+
+                </script>
         <!-- main container -->
         <main id="main">
           <!-- main tour information -->
@@ -80,7 +114,8 @@
                   <div class="slide">
                     <div class="bg-stretch">
                       <img
-                        src="img/generic/img-17.jpg"
+                      id="image1"
+                      
                         alt="image descriprion"
                         height="1104"
                         width="966"
@@ -90,7 +125,7 @@
                   <div class="slide">
                     <div class="bg-stretch">
                       <img
-                        src="img/generic/img-07.jpg"
+                      id="image2"
                         alt="image descriprion"
                         height="1104"
                         width="966"
@@ -160,9 +195,32 @@
 
                       <script>
 
+  // Retrieve stored values and fill the inputs when the tour-details1.php page loads
+                  document.addEventListener('DOMContentLoaded', function () {
+                    // Get the stored values from localStorage
+                    var storedFullName = localStorage.getItem('fullName');
+                    var storedEmail = localStorage.getItem('email');
+                    var storedContactNumber = localStorage.getItem('contactNumber');
+
+                    // Fill the inputs with the stored values
+                    document.getElementById('NameInput').value = storedFullName;
+                    document.getElementById('EmailInput').value = storedEmail;
+                    document.getElementById('ContactInput').value = storedContactNumber;
+
+                    // Clear the stored values from localStorage
+                    localStorage.removeItem('fullName');
+                    localStorage.removeItem('email');
+                    localStorage.removeItem('contactNumber');
+                  });
+
     </script>
 
                     <script>
+                      
+
+
+
+
                                         document.addEventListener('DOMContentLoaded', function() {
                                           const childrenInputElement = document.getElementById('childrenInput');
                                         const adultsInputElement = document.getElementById('adultsInput');
@@ -295,11 +353,11 @@
                                         // Add event listener for change event on parkSelect
                                         document.getElementById('parkSelect').addEventListener('change', function() {
                                             const activitiesSelect = document.getElementById('Activities');
-                                            activitiesSelect.innerHTML =  '<option value="">--select--</option>' +
+                                            activitiesSelect.innerHTML =  '<option value="0">--select--</option>' +
                                             '<option value="0">--select--</option>' +
-                                                                          '<option value="230">Sigiriya hot air balloon</option>' +
-                                                                          '<option value="45">Whale and dolphin watching</option>' +
-                                                                          '<option value="20">Sigiriya village tour</option>';
+                                                                          '<option value="100">Sigiriya hot air balloon</option>' +
+                                                                          '<option value="150">Whale and dolphin watching</option>' +
+                                                                          '<option value="200">Sigiriya village tour</option>';
                                             const parkId = this.value;
                                             if (parkId) {
                                                 toggleActivitiesSelect(parkId);
@@ -329,7 +387,7 @@
 
                                         
                                           // Clear existing options
-                                          tourSelect.innerHTML = '<option value="">--Select The Park--</option>';
+                                          tourSelect.innerHTML = '<option value="0">--Select The Park--</option>';
                                           // Populate tour select dropdown with fetched data
                                           data.forEach(tour => {
                                               const option = document.createElement('option');
@@ -469,7 +527,7 @@
                                     class="form-control"
                                     id="adultsInput"
                                     name="adultsInput"
-                                    min="0" max="6"
+                                    min="0" max="7"
                                     maxlength="1"
                                     oninput="limitTotal(this)"
                                     onload="limitTotal(this)"
@@ -483,7 +541,7 @@
                                     name="childrenInput"
                                     class="form-control"
                                     id="childrenInput"
-                                    min="0" max="6"
+                                    min="0" max="7"
                                     oninput="limitTotal(this)"
                                     onload="limitTotal(this)"
                                   />
@@ -510,11 +568,11 @@
                                     var childrenCount = parseInt(document.getElementById('childrenInput').value);
                                     
                                     // Dynamically adjust maximum limit for adults input
-                                    var adultsMax = 6 - childrenCount;
+                                    var adultsMax = 7 - childrenCount;
                                     document.getElementById('adultsInput').max = adultsMax;
                                     
                                     // Dynamically adjust maximum limit for children input
-                                    var childrenMax = 6 - adultsCount;
+                                    var childrenMax = 7 - adultsCount;
                                     document.getElementById('childrenInput').max = childrenMax;
                                   }
                                   </script>
@@ -1061,6 +1119,37 @@
                   </ul>
 
 
+                  <ul class="detail-accordion accordion-v2">
+                    <li class="active">
+                      <a href="#">
+                        <strong class="title">PAX 7</strong>
+                      </a>
+                      <div class="slide">
+                        <div class="slide-holder">
+                          <!-- Start of the table -->
+                          <table style="width: 100%; font-size: 1.2em">
+                            <thead>
+                              <tr>
+                                <th style="padding: 5px">Tour Type</th>
+                                <th style="padding: 5px">Price</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <!-- Add a row for each tour type and its price -->
+                                <tr>
+                               <td style="padding: 5px" class="tourName"></td>
+                               <td style="padding: 5px" class="tourPrice6"></td>
+                             </tr>
+                              <!-- Add more rows as necessary -->
+                            </tbody>
+                          </table>
+                          <!-- End of the table -->
+                        </div>
+                      </div>
+                    </li>
+                    <!-- Add more list items for other PAX values -->
+                  </ul>
+
 
 
                 </div>
@@ -1094,7 +1183,7 @@
             tourPricesProxy.tour_price2 = data.tour_price2;
             tourPricesProxy.tour_price3 = data.tour_price3;
             tourPricesProxy.tour_price4 = data.tour_price4;
-            tourPricesProxy.tour_price5 = data.tour_price5;
+            tourPricesProxy.tour_price6 = data.tour_price6;
             // console.log(data); // Log received data to the console
             // Update the table with tour details
             const tourNameCells = document.querySelectorAll('.tourName');
@@ -1103,7 +1192,8 @@
             const tourPriceCell2 = document.querySelectorAll('.tourPrice2')[0]; // Access the first element from the NodeList
             const tourPriceCell3 = document.querySelectorAll('.tourPrice3')[0]; // Access the first element from the NodeList
             const tourPriceCell4 = document.querySelectorAll('.tourPrice4')[0]; // Access the first element from the NodeList
-            const tourPriceCell5 = document.querySelectorAll('.tourPrice5')[0]; // Access the first element from the NodeList
+            const tourPriceCell5 = document.querySelectorAll('.tourPrice5')[0];
+            const tourPriceCell6 = document.querySelectorAll('.tourPrice6')[0]; // Access the first element from the NodeList
             const tour_details = document.getElementById('tour_details');
             const tinclude = document.getElementById('tinclude');
 
@@ -1126,6 +1216,7 @@
             tourPriceCell3.textContent = data.tour_price3;
             tourPriceCell4.textContent = data.tour_price4;
             tourPriceCell5.textContent = data.tour_price5;
+            tourPriceCell6.textContent = data.tour_price6;
             tour_details.innerHTML = decodedHtml;
             tinclude.innerHTML = decodedHtml1;
 
@@ -1137,7 +1228,7 @@
             });
 
             const vehicaleSelect = document.getElementById('vehicale');
-            vehicaleSelect.innerHTML = '<option value="">--select--</option>';
+            vehicaleSelect.innerHTML = '<option value="0">--select--</option>';
 
           if (data) {
               if (data.v1 && data.vp1) {
@@ -1201,6 +1292,7 @@ function calculateTotalPrice() {
         adultsCount === 4 ? parseInt(tourPricesProxy.tour_price3.replace(/\D/g, ''), 10) :
         adultsCount === 5 ? parseInt(tourPricesProxy.tour_price4.replace(/\D/g, ''), 10) :
         adultsCount === 6 ? parseInt(tourPricesProxy.tour_price5.replace(/\D/g, ''), 10) :
+        adultsCount === 7 ? parseInt(tourPricesProxy.tour_price6.replace(/\D/g, ''), 10) :
         
         0;
 
