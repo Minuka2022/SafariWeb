@@ -179,7 +179,8 @@
 
 
                       <div class="form-group" style="font-size: larger">
-                        <label for="adventure">Select Your National Park</label>
+                        <label for="adventure">Select Your National Park </label>
+                        <p style="font-size:14px;" >(First select your  national park to unlock tour time)</p>
                         <div class="select-holder" >
                           <select
                             class="trip"
@@ -483,6 +484,7 @@
 
                         <div class="form-group" style="font-size: larger">
                           <label for="tourSelect">Activities</label>
+                           <p style="font-size:14px;" >(Activities  availble for Minneriya , Kaudulla , Eco national parks only)</p>
                           <div class="select-holder">
                               <select class="trip" style="height: 40px; width: 100%" id="Activities" name="Activities" disabled>
                                   <!-- Options will be dynamically added here -->
