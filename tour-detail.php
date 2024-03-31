@@ -196,23 +196,34 @@
 
                       <script>
 
-  // Retrieve stored values and fill the inputs when the tour-details1.php page loads
-                  document.addEventListener('DOMContentLoaded', function () {
+                document.addEventListener('DOMContentLoaded', function () {
                     // Get the stored values from localStorage
                     var storedFullName = localStorage.getItem('fullName');
                     var storedEmail = localStorage.getItem('email');
                     var storedContactNumber = localStorage.getItem('contactNumber');
+                    var storedParkId = localStorage.getItem('parkId');
+                    var storedTourId = localStorage.getItem('tourId');
+                    var storedVehiclePrice = localStorage.getItem('vehiclePrice');
 
                     // Fill the inputs with the stored values
                     document.getElementById('NameInput').value = storedFullName;
                     document.getElementById('EmailInput').value = storedEmail;
                     document.getElementById('ContactInput').value = storedContactNumber;
 
+                    console.log
+
+                    const params = new URLSearchParams();
+                    params.append('parkId', storedParkId);
+                    params.append('tourId', storedTourId);
+
                     // Clear the stored values from localStorage
                     localStorage.removeItem('fullName');
                     localStorage.removeItem('email');
                     localStorage.removeItem('contactNumber');
-                  });
+                    localStorage.removeItem('parkId');
+                    localStorage.removeItem('tourId');
+                    localStorage.removeItem('vehiclePrice');
+                });
 
     </script>
 

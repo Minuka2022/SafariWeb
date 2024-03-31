@@ -201,6 +201,13 @@
                     var storedFullName = localStorage.getItem('fullName');
                     var storedEmail = localStorage.getItem('email');
                     var storedContactNumber = localStorage.getItem('contactNumber');
+                    // Retrieve stored values from localStorage
+                          var storedParkId = localStorage.getItem('parkId');
+                          var storedTourId = localStorage.getItem('tourId');
+                          var storedVehiclePrice = localStorage.getItem('vehiclePrice');
+
+                          const params = new URLSearchParams(`?parkId=${storedParkId}&tourId=${storedTourId}`);
+
 
                     // Fill the inputs with the stored values
                     document.getElementById('NameInput').value = storedFullName;
@@ -211,6 +218,10 @@
                     localStorage.removeItem('fullName');
                     localStorage.removeItem('email');
                     localStorage.removeItem('contactNumber');
+                    localStorage.removeItem('parkId');
+                  localStorage.removeItem('tourId');
+                  localStorage.removeItem('vehiclePrice');
+
                   });
 
     </script>
