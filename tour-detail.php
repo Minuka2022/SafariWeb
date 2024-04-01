@@ -518,6 +518,11 @@
 
 
 
+
+
+
+
+
                       <div class="form-group" style="font-size: larger">
                         <label for="dateInput">Choose Date:</label>
                         <input
@@ -1193,7 +1198,6 @@
             tourPricesProxy.tour_price3 = data.tour_price3;
             tourPricesProxy.tour_price4 = data.tour_price4;
             tourPricesProxy.tour_price6 = data.tour_price6;
-            // console.log(data); // Log received data to the console
             // Update the table with tour details
             const tourNameCells = document.querySelectorAll('.tourName');
             const tourPriceCells = document.querySelectorAll('.tourPrice');
@@ -1206,20 +1210,18 @@
             const tour_details = document.getElementById('tour_details');
             const tinclude = document.getElementById('tinclude');
 
-           // Log cell count to check if cells are correctly selected
-
             function decodeHtml(html) {
-                  var txt = document.createElement("textarea");
-                  txt.innerHTML = html;
-                  return txt.value;
-              }
-              function decodeHtml1(html) {
-                  var txt = document.createElement("textarea");
-                  txt.innerHTML = html;
-                  return txt.value;
-              }
-              const decodedHtml = decodeHtml(data.tour_details);
-              const decodedHtml1 = decodeHtml1(data.include);
+                var txt = document.createElement("textarea");
+                txt.innerHTML = html;
+                return txt.value;
+            }
+            function decodeHtml1(html) {
+                var txt = document.createElement("textarea");
+                txt.innerHTML = html;
+                return txt.value;
+            }
+            const decodedHtml = decodeHtml(data.tour_details);
+            const decodedHtml1 = decodeHtml1(data.include);
             tourPriceCell1.textContent = data.tour_price1;
             tourPriceCell2.textContent = data.tour_price2;
             tourPriceCell3.textContent = data.tour_price3;
@@ -1228,7 +1230,6 @@
             tourPriceCell6.textContent = data.tour_price6;
             tour_details.innerHTML = decodedHtml;
             tinclude.innerHTML = decodedHtml1;
-
             tourNameCells.forEach(cell => {
                 cell.textContent = data.tour_name;
             });
@@ -1239,26 +1240,40 @@
             const vehicaleSelect = document.getElementById('vehicale');
             vehicaleSelect.innerHTML = '<option value="0">--select--</option>';
 
-          if (data) {
-              if (data.v1 && data.vp1) {
-                  vehicaleSelect.innerHTML += `<option value="${data.vp1}">${data.v1} - ${"$"+data.vp1}</option>`;
-              }
-              if (data.v2 && data.vp2) {
-                  vehicaleSelect.innerHTML += `<option value="${data.vp2}">${data.v2} - ${"$"+data.vp2}</option>`;
-              }
-              if (data.v3 && data.vp3) {
-                  vehicaleSelect.innerHTML += `<option value="${data.vp3}">${data.v3} - ${"$"+data.vp3}</option>`;
-              }
-              // Repeat for other vehicles and their prices if available
-          }
-          
-
-
-          vehicaleSelect.dispatchEvent(new Event('change'));
+            if (data) {
+                if (data.v1 && data.vp1) {
+                    vehicaleSelect.innerHTML += `<option value="${data.vp1}">${data.v1} - ${"$"+data.vp1}</option>`;
+                }
+                if (data.v2 && data.vp2) {
+                    vehicaleSelect.innerHTML += `<option value="${data.vp2}">${data.v2} - ${"$"+data.vp2}</option>`;
+                }
+                if (data.v3 && data.vp3) {
+                    vehicaleSelect.innerHTML += `<option value="${data.vp3}">${data.v3} - ${"$"+data.vp3}</option>`;
+                }
+                // Repeat for other vehicles and their prices if available
+            }
+            
+            // Auto-select option based on vehiclePrice parameter from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const vehiclePrice = urlParams.get('vehiclePrice');
+            if (vehiclePrice) {
+                for (let i = 0; i < vehicaleSelect.options.length; i++) {
+                    if (vehicaleSelect.options[i].value === vehiclePrice) {
+                        vehicaleSelect.selectedIndex = i;
+                        console.log("Option selected:", vehicaleSelect.options[i].textContent);
+                        // Trigger change event manually
+            vehicaleSelect.dispatchEvent(new Event('change'));
+                        break;
+                    }
+                }
+            } else {
+                console.log("Vehicle price not found in URL");
+            }
         })
         .catch(error => console.error('Error fetching tour details:', error));
     }
 });
+
 
 
 let tourPricesProxy = new Proxy({}, {
@@ -1326,6 +1341,23 @@ document.getElementById('tourSelect').addEventListener('change', calculateTotalP
 document.getElementById('Activities').addEventListener('change', calculateTotalPrice); // Add event listener for Activities select
 document.getElementById('vehicale').addEventListener('change', calculateTotalPrice);
 
+window.addEventListener('DOMContentLoaded', (event) => {
+    var selectElement = document.getElementById('vehicale');
+    if (selectElement) {
+        var urlParams = new URLSearchParams(window.location.search);
+        var vehiclePrice = urlParams.get('vehiclePrice');
+        console.log("vehiclePrice:", vehiclePrice);
+
+        for (var i = 0; i < selectElement.options.length; i++) {
+            console.log("option value:", selectElement.options[i].value);
+            if (selectElement.options[i].value == vehiclePrice) {
+                selectElement.selectedIndex = i;
+                console.log("Option selected:", selectElement.options[i].textContent);
+                break;
+            }
+        }
+    }
+});
 
       </script>
       <!-- main footer -->
