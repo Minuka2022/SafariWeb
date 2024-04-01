@@ -201,8 +201,7 @@
                     var storedFullName = localStorage.getItem('fullName');
                     var storedEmail = localStorage.getItem('email');
                     var storedContactNumber = localStorage.getItem('contactNumber');
-                    var storedParkId = localStorage.getItem('parkId');
-                    var storedTourId = localStorage.getItem('tourId');
+                   
                     var storedVehiclePrice = localStorage.getItem('vehiclePrice');
 
                     // Fill the inputs with the stored values
@@ -210,11 +209,7 @@
                     document.getElementById('EmailInput').value = storedEmail;
                     document.getElementById('ContactInput').value = storedContactNumber;
 
-                    console.log
-
-                    const params = new URLSearchParams();
-                    params.append('parkId', storedParkId);
-                    params.append('tourId', storedTourId);
+          
 
                     // Clear the stored values from localStorage
                     localStorage.removeItem('fullName');
@@ -510,7 +505,7 @@
                          <div class="form-group" style="font-size: larger">
                           <label for="tourSelect">Choose the jeep</label>
                           <div class="select-holder">
-                              <select class="trip" style="height: 40px; width: 100%" id="vehicale" name="vehicale" >
+                          <select class="trip" style="height: 40px; width: 100%" id="vehicale" name="vehicale" >
                                   <!-- Options will be dynamically added here -->
                                   <option value="">--select--</option>
 
@@ -1186,6 +1181,7 @@
     const adultsInputElement = document.getElementById('adultsInput');
     childrenInputElement.disabled = !tourId;
     adultsInputElement.disabled = !tourId;
+    
     if (tourId) {
         // Fetch tour details based on the selected tour ID
         fetch('fetch_tour_details.php?tour_id=' + tourId)
@@ -1240,21 +1236,53 @@
                 cell.textContent = data.tour_price;
             });
 
-            const vehicaleSelect = document.getElementById('vehicale');
-            vehicaleSelect.innerHTML = '<option value="0">--select--</option>';
+              // Get the URL parameters
+    const params = new URLSearchParams(window.location.search);
+    const vehiclePriceFromUrl = params.get('vehiclePrice');
 
-          if (data) {
-              if (data.v1 && data.vp1) {
-                  vehicaleSelect.innerHTML += `<option value="${data.vp1}">${data.v1} - ${"$"+data.vp1}</option>`;
-              }
-              if (data.v2 && data.vp2) {
-                  vehicaleSelect.innerHTML += `<option value="${data.vp2}">${data.v2} - ${"$"+data.vp2}</option>`;
-              }
-              if (data.v3 && data.vp3) {
-                  vehicaleSelect.innerHTML += `<option value="${data.vp3}">${data.v3} - ${"$"+data.vp3}</option>`;
-              }
-              // Repeat for other vehicles and their prices if available
-          }
+    // Get the select element
+    const vehicaleSelect = document.getElementById('vehicale');
+    vehicaleSelect.innerHTML = '<option value="0">--select--</option>';
+
+    // Variable to track if the vehiclePrice is found in the data
+    let vehiclePriceFound = false;
+
+    // Check if vehiclePrice is available in the URL parameters
+    if (vehiclePriceFromUrl) {
+        // Loop through the data to find a matching vehiclePrice
+        if (data) {
+            if (data.v1 && data.vp1 && data.vp1 === vehiclePriceFromUrl) {
+                vehicaleSelect.innerHTML += `<option value="${data.vp1}" selected>${data.v1} - ${"$"+data.vp1}</option>`;
+                vehiclePriceFound = true;
+            }
+            if (data.v2 && data.vp2 && data.vp2 === vehiclePriceFromUrl) {
+                vehicaleSelect.innerHTML += `<option value="${data.vp2}" selected>${data.v2} - ${"$"+data.vp2}</option>`;
+                vehiclePriceFound = true;
+            }
+            if (data.v3 && data.vp3 && data.vp3 === vehiclePriceFromUrl) {
+                vehicaleSelect.innerHTML += `<option value="${data.vp3}" selected>${data.v3} - ${"$"+data.vp3}</option>`;
+                vehiclePriceFound = true;
+            }
+            // Repeat for other vehicles and their prices if available
+        }
+    }
+
+    // If vehiclePrice is not found in the data or not available in URL parameters, populate options from data
+    if (!vehiclePriceFound) {
+        if (data) {
+            if (data.v1 && data.vp1) {
+                vehicaleSelect.innerHTML += `<option value="${data.vp1}">${data.v1} - ${"$"+data.vp1}</option>`;
+            }
+            if (data.v2 && data.vp2) {
+                vehicaleSelect.innerHTML += `<option value="${data.vp2}">${data.v2} - ${"$"+data.vp2}</option>`;
+            }
+            if (data.v3 && data.vp3) {
+                vehicaleSelect.innerHTML += `<option value="${data.vp3}">${data.v3} - ${"$"+data.vp3}</option>`;
+            }
+            // Repeat for other vehicles and their prices if available
+        }
+    }
+          
 
 
           vehicaleSelect.dispatchEvent(new Event('change'));
@@ -1328,8 +1356,6 @@ document.getElementById('childrenInput').addEventListener('input', calculateTota
 document.getElementById('tourSelect').addEventListener('change', calculateTotalPrice);
 document.getElementById('Activities').addEventListener('change', calculateTotalPrice); // Add event listener for Activities select
 document.getElementById('vehicale').addEventListener('change', calculateTotalPrice);
-
-  
 
 
       </script>

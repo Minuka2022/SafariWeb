@@ -782,7 +782,7 @@ document.getElementById('tourSelect').addEventListener('change', function() {
           </div>
 
           <script>
-             document.getElementById('ssubmit').addEventListener('click', function (e) {
+          document.getElementById('ssubmit').addEventListener('click', function (e) {
                   e.preventDefault(); // Prevent the default form submission
 
                   // Get the input values
@@ -793,19 +793,19 @@ document.getElementById('tourSelect').addEventListener('change', function() {
                   var tourId = document.getElementById('tourSelect').value;
                   var vehiclePrice = document.getElementById('vehicale').value;
 
-                  // Store the selected values in localStorage
-                  localStorage.setItem('parkId', parkId);
-                  localStorage.setItem('tourId', tourId);
-                  localStorage.setItem('vehiclePrice', vehiclePrice);
+                  // Construct the URL with the parkId, tourId, and vehiclePrice parameters
+                  const url = `tour-detail.php?parkId=${parkId}&tourId=${tourId}&vehiclePrice=${vehiclePrice}`;
 
                   // Store the input values in localStorage
                   localStorage.setItem('fullName', fullName);
                   localStorage.setItem('email', email);
                   localStorage.setItem('contactNumber', contactNumber);
 
-                  // Redirect to tour-details1.php
-                  window.location.href = 'tour-detail.php';
-                });
+                  // Redirect to the constructed URL
+                  window.location.href = url;
+              });
+
+
          </script>
 
           <!-- special block -->
