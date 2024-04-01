@@ -1236,52 +1236,21 @@
                 cell.textContent = data.tour_price;
             });
 
-              // Get the URL parameters
-    const params = new URLSearchParams(window.location.search);
-    const vehiclePriceFromUrl = params.get('vehiclePrice');
+            const vehicaleSelect = document.getElementById('vehicale');
+            vehicaleSelect.innerHTML = '<option value="0">--select--</option>';
 
-    // Get the select element
-    const vehicaleSelect = document.getElementById('vehicale');
-    vehicaleSelect.innerHTML = '<option value="0">--select--</option>';
-
-    // Variable to track if the vehiclePrice is found in the data
-    let vehiclePriceFound = false;
-
-    // Check if vehiclePrice is available in the URL parameters
-    if (vehiclePriceFromUrl) {
-        // Loop through the data to find a matching vehiclePrice
-        if (data) {
-            if (data.v1 && data.vp1 && data.vp1 === vehiclePriceFromUrl) {
-                vehicaleSelect.innerHTML += `<option value="${data.vp1}" selected>${data.v1} - ${"$"+data.vp1}</option>`;
-                vehiclePriceFound = true;
-            }
-            if (data.v2 && data.vp2 && data.vp2 === vehiclePriceFromUrl) {
-                vehicaleSelect.innerHTML += `<option value="${data.vp2}" selected>${data.v2} - ${"$"+data.vp2}</option>`;
-                vehiclePriceFound = true;
-            }
-            if (data.v3 && data.vp3 && data.vp3 === vehiclePriceFromUrl) {
-                vehicaleSelect.innerHTML += `<option value="${data.vp3}" selected>${data.v3} - ${"$"+data.vp3}</option>`;
-                vehiclePriceFound = true;
-            }
-            // Repeat for other vehicles and their prices if available
-        }
-    }
-
-    // If vehiclePrice is not found in the data or not available in URL parameters, populate options from data
-    if (!vehiclePriceFound) {
-        if (data) {
-            if (data.v1 && data.vp1) {
-                vehicaleSelect.innerHTML += `<option value="${data.vp1}">${data.v1} - ${"$"+data.vp1}</option>`;
-            }
-            if (data.v2 && data.vp2) {
-                vehicaleSelect.innerHTML += `<option value="${data.vp2}">${data.v2} - ${"$"+data.vp2}</option>`;
-            }
-            if (data.v3 && data.vp3) {
-                vehicaleSelect.innerHTML += `<option value="${data.vp3}">${data.v3} - ${"$"+data.vp3}</option>`;
-            }
-            // Repeat for other vehicles and their prices if available
-        }
-    }
+          if (data) {
+              if (data.v1 && data.vp1) {
+                  vehicaleSelect.innerHTML += `<option value="${data.vp1}">${data.v1} - ${"$"+data.vp1}</option>`;
+              }
+              if (data.v2 && data.vp2) {
+                  vehicaleSelect.innerHTML += `<option value="${data.vp2}">${data.v2} - ${"$"+data.vp2}</option>`;
+              }
+              if (data.v3 && data.vp3) {
+                  vehicaleSelect.innerHTML += `<option value="${data.vp3}">${data.v3} - ${"$"+data.vp3}</option>`;
+              }
+              // Repeat for other vehicles and their prices if available
+          }
           
 
 
