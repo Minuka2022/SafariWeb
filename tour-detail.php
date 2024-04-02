@@ -686,23 +686,12 @@
               <!-- overview tab content -->
               <div role="tabpanel" class="tab-pane active" id="tab01">
                 <div class="row">
+                  
                   <div class="col-md-6">
-                    <strong class="header-box"
-                      >All about the classic Annapurna Circuit Trekking</strong
-                    >
-                    <div class="detail " id="tour_details">
-                     
-                     
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <strong class="header-box"
-                      >The tour package inclusions and exclusions at a
-                      glance</strong
-                    >
+                  
                     <div class="text-box">
                       <div class="holder">
-                        <strong class="title"
+                        <strong class="title" style="font-weight:bold; font-size:20px;"
                           >Whats included in this tour</strong
                         >
                         <span class="sub-title"
@@ -715,6 +704,14 @@
                       </div>
                     </div>
                     
+                  </div>
+
+                  <div class="col-md-6">
+                    
+                    <div class="detail " id="tour_details">
+                     
+                     
+                    </div>
                   </div>
                 </div>
               </div>
