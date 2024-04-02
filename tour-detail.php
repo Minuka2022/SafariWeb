@@ -235,8 +235,7 @@
                     localStorage.removeItem('fullName');
                     localStorage.removeItem('email');
                     localStorage.removeItem('contactNumber');
-                    localStorage.removeItem('parkId');
-                    localStorage.removeItem('tourId');
+                   
                     localStorage.removeItem('vehiclePrice');
                 });
 
