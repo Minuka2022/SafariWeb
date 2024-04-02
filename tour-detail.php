@@ -134,6 +134,26 @@
                   </div>
                 </div>
               </div>
+              <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            // Function to scroll to the target element
+            function scrollToElement(elementId) {
+                const element = document.getElementById(elementId);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+
+            // Check if there's an anchor in the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('scrollTo') && urlParams.get('scrollTo') === 'nametag') {
+                // Scroll to the element with id 'nametag' after a short delay
+                setTimeout(function() {
+                    scrollToElement('nametag');
+                }, 500); // Adjust the delay as needed
+            }
+        });
+    </script>
               <div class="height col-md-6 text-col">
                 <div class="holder" style="padding-bottom: 50px">
                   <h1 style="text-align: center; font-size: xx-large" id="nametag">
@@ -488,18 +508,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group" style="font-size: larger">
-                          <label for="tourSelect">Activities</label>
-                           <p style="font-size:14px;" >(Activities  availble for Minneriya , Kaudulla , Eco national parks only)</p>
-                          <div class="select-holder">
-                              <select class="trip" style="height: 40px; width: 100%" id="Activities" name="Activities" disabled>
-                                  <!-- Options will be dynamically added here -->
-                                  <option value="">--select--</option>
-                                  <option value="0">--select--</option>
-
-                              </select>
-                          </div>
-                       </div>
+                      
 
 
                          <div class="form-group" style="font-size: larger">
@@ -517,9 +526,20 @@
 
 
 
+                       <script>
+                        window.addEventListener('DOMContentLoaded', function() {
+                            // Get today's date
+                            var today = new Date();
+                            var dd = String(today.getDate()).padStart(2, '0');
+                            var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+                            var yyyy = today.getFullYear();
 
+                            today = yyyy + '-' + mm + '-' + dd;
 
-
+                            // Set the min attribute of the date input to today's date
+                            document.getElementById('dateInput').min = today;
+                        });
+                    </script>
 
 
 
@@ -1304,9 +1324,7 @@ function calculateTotalPrice() {
     let vehicalePrice = 0; // Initialize vehicle price to 0
 
     // Get the prices of selected activity and vehicle if they are not '--select--'
-    if (document.getElementById('Activities').value !== '') {
-        activityPrice = parseInt(document.getElementById('Activities').value);
-    }
+   
     if (document.getElementById('vehicale').value !== '') {
         vehicalePrice = parseInt(document.getElementById('vehicale').value);
     }
@@ -1328,7 +1346,7 @@ function calculateTotalPrice() {
         childrenPrice = (parseInt(tourPricesProxy.tour_price.replace(/\D/g, ''), 10) / 2) * childrenCount; // Calculate children price
     }
 
-    const totalPrice = adultPrice + childrenPrice + activityPrice + vehicalePrice;
+    const totalPrice = adultPrice + childrenPrice + vehicalePrice;
     console.log('Total Price:', totalPrice);
 
     document.getElementById('totalPrice').innerHTML = 'Total Price: <strong>US $' + totalPrice.toFixed(2) + '</strong>';
@@ -1338,7 +1356,7 @@ function calculateTotalPrice() {
 document.getElementById('adultsInput').addEventListener('input', calculateTotalPrice);
 document.getElementById('childrenInput').addEventListener('input', calculateTotalPrice);
 document.getElementById('tourSelect').addEventListener('change', calculateTotalPrice);
-document.getElementById('Activities').addEventListener('change', calculateTotalPrice); // Add event listener for Activities select
+
 document.getElementById('vehicale').addEventListener('change', calculateTotalPrice);
 
 window.addEventListener('DOMContentLoaded', (event) => {
