@@ -184,7 +184,7 @@
 
 
                       <div class="form-group" style="font-size: larger">
-                        <label for="adventure">Select Your National Park </label>
+                        <label for="adventure">Select Your National Park or Activity</label>
                         <p style="font-size:14px;" >(First select your  national park to unlock tour time)</p>
                         <div class="select-holder" >
                           <select
@@ -483,7 +483,7 @@
 
                           </script>
                         <div class="form-group" style="font-size: larger">
-                            <label for="tourSelect">Select Tour time :</label>
+                            <label for="tourSelect">Select Ride time :</label>
                             <div class="select-holder">
                                 <select class="trip" id="tourSelect" name="tourSelect" style="height: 40px; width: 100%">
                                     <!-- Options will be dynamically added here -->
@@ -509,9 +509,9 @@
                        </div>
 
                        <div class="form-group" style="font-size: larger">
-    <label for="notesInput">Full name</label>
-    <input class="form-control" id="NameInput" name="NameInput">
-</div>
+                        <label for="notesInput">Full name</label>
+                        <input class="form-control" id="NameInput" name="NameInput">
+                    </div>
 
 
  <div class="form-group" style="font-size: larger">
