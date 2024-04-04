@@ -180,22 +180,7 @@
                     <form>
 
                     
- <div class="form-group" style="font-size: larger">
-    <label for="notesInput">Full name</label>
-    <input class="form-control" id="NameInput" name="NameInput">
-</div>
-
-
- <div class="form-group" style="font-size: larger">
-    <label for="notesInput">Contact</label>
-    <input class="form-control" id="ContactInput" name="ContactInput">
-</div>
-
-
- <div class="form-group" style="font-size: larger">
-    <label for="notesInput">Email</label>
-    <input class="form-control" id="EmailInput" name="EmailInput">
-</div>
+ 
 
 
                       <div class="form-group" style="font-size: larger">
@@ -523,7 +508,22 @@
                           </div>
                        </div>
 
+                       <div class="form-group" style="font-size: larger">
+    <label for="notesInput">Full name</label>
+    <input class="form-control" id="NameInput" name="NameInput">
+</div>
 
+
+ <div class="form-group" style="font-size: larger">
+    <label for="notesInput">Contact</label>
+    <input class="form-control" id="ContactInput" name="ContactInput">
+</div>
+
+
+ <div class="form-group" style="font-size: larger">
+    <label for="notesInput">Email</label>
+    <input class="form-control" id="EmailInput" name="EmailInput">
+</div>
 
                        <script>
                         window.addEventListener('DOMContentLoaded', function() {
