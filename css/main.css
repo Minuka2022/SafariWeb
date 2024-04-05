@@ -8089,7 +8089,7 @@ body > .jcf-select-drop.jcf-drop-flipped {
 
 #scroll-to-top {
 	position: fixed;
-	top: calc(100% - 130px); /* Adjusted value */
+	top: calc(100% - 140px); /* Adjusted value */
 	right: 35px;
 	background: rgba(0, 0, 0, .7);
 	width: 45px;
