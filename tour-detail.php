@@ -150,7 +150,7 @@
                 // Scroll to the element with id 'nametag' after a short delay
                 setTimeout(function() {
                     scrollToElement('nametag');
-                }, 500); // Adjust the delay as needed
+                }, 900); // Adjust the delay as needed
             }
         });
     </script>
