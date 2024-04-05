@@ -1567,8 +1567,8 @@ blockquote.normal {
 	padding: 0;
 	position: absolute;
 	margin: 0;
-	left: 20px;
-	top: -52px;
+	right: 20px;
+	top: -60px;
 	padding: 10px;
 }
 
