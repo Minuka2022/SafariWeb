@@ -1411,5 +1411,5 @@ window.addEventListener('DOMContentLoaded', (event) => {
     <script src="js/jquery.main.js"></script>
   </body>
 
-  <!-- Mirrored from html.waituk.com/entrada/tour-detail.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Sep 2023 16:24:33 GMT -->
+ 
 </html>
