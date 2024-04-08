@@ -282,7 +282,7 @@
                                     class="form-control"
                                     id="adultsInput"
                                     name="adultsInput"
-                                    min="0" max="10"
+                                    min="0" max="1000"
                                     maxlength="2"
                                     oninput="limitTotal(this)"
                                     onload="limitTotal(this)"
@@ -297,7 +297,7 @@
                                     name="childrenInput"
                                     class="form-control"
                                     id="childrenInput"
-                                    min="0" max="10"
+                                    min="0" max="1000"
                                     oninput="limitTotal(this)"
                                     onload="limitTotal(this)"
                                     onwheel="return false;" 
@@ -325,11 +325,11 @@
                                     var childrenCount = parseInt(document.getElementById('childrenInput').value);
                                     
                                     // Dynamically adjust maximum limit for adults input
-                                    var adultsMax = 10 - childrenCount;
+                                    var adultsMax = 1000 - childrenCount;
                                     document.getElementById('adultsInput').max = adultsMax;
                                     
                                     // Dynamically adjust maximum limit for children input
-                                    var childrenMax = 10 - adultsCount;
+                                    var childrenMax = 1000 - adultsCount;
                                     document.getElementById('childrenInput').max = childrenMax;
                                   }
                                   </script>

@@ -563,6 +563,7 @@
                                     maxlength="1"
                                     oninput="limitTotal(this)"
                                     onload="limitTotal(this)"
+                                    onwheel="return false;" 
                                   />
                                 </div>
 
@@ -576,6 +577,7 @@
                                     min="0" max="7"
                                     oninput="limitTotal(this)"
                                     onload="limitTotal(this)"
+                                    onwheel="return false;" 
                                   />
                                 </div>
                                 <script>
