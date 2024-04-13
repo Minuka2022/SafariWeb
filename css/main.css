@@ -5348,10 +5348,11 @@ a.thumbnail img {
 	font-weight: normal;
 	font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	color: #5c5e62;
-	margin-right: 30px;
+	margin-right: -1rem; /* Reduced from 30px to 10px */
 	letter-spacing: 0;
 	text-transform: none;
 }
+
 
 .question-select .jcf-select .jcf-select-opener {
 	width: 31px;
