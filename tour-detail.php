@@ -487,7 +487,7 @@
                             <div class="select-holder">
                                 <select class="trip" id="tourSelect" name="tourSelect" style="height: 40px; width: 100%">
                                     <!-- Options will be dynamically added here -->
-                                    <option value="">--select--</option>
+                                    <option value="" default>--selec Ride time--</option>
                                 </select>
                             </div>
                         </div>
@@ -500,7 +500,7 @@
                           <div class="select-holder">
                           <select class="trip" style="height: 40px; width: 100%" id="vehicale" name="vehicale" >
                                   <!-- Options will be dynamically added here -->
-                                  <option value="">--select--</option>
+                                  <option value="" default>--select ht jeep--</option>
 
 
                                 
