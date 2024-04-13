@@ -398,7 +398,7 @@
 
                                         
                                           // Clear existing options
-                                          tourSelect.innerHTML = '<option value="0">--Select The Park--</option>';
+                                          tourSelect.innerHTML = '<option value="0" default>--Select Ride Time--</option>';
                                           // Populate tour select dropdown with fetched data
                                           data.forEach(tour => {
                                               const option = document.createElement('option');
@@ -429,11 +429,6 @@
                               });  
 
 
-
-$(document).ready(function() {
-    // Add default option when page loads
-    $('#tourSelect').append('<option value="" default>--Select Ride time--</option>');
-});
 
 
 
