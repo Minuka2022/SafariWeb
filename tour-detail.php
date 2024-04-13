@@ -350,30 +350,30 @@
 
 
 
-                                          // Event listener for Activities disabled and enable 
-                                          function toggleActivitiesSelect(parkId) {
-                                            const activitiesSelect = document.getElementById('Activities');
-                                            if (parkId === '2' || parkId === '3' || parkId === '4') {
-                                                activitiesSelect.disabled = false; // Enable the select element
-                                            } else {
-                                                activitiesSelect.selectedIndex = 0;
-                                                activitiesSelect.disabled = true; // Disable the select element
-                                            }
-                                        }
+                                        //   // Event listener for Activities disabled and enable 
+                                        //   function toggleActivitiesSelect(parkId) {
+                                        //     const activitiesSelect = document.getElementById('Activities');
+                                        //     if (parkId === '2' || parkId === '3' || parkId === '4') {
+                                        //         activitiesSelect.disabled = false; // Enable the select element
+                                        //     } else {
+                                        //         activitiesSelect.selectedIndex = 0;
+                                        //         activitiesSelect.disabled = true; // Disable the select element
+                                        //     }
+                                        // }
 
-                                        // Add event listener for change event on parkSelect
-                                        document.getElementById('parkSelect').addEventListener('change', function() {
-                                            const activitiesSelect = document.getElementById('Activities');
-                                            activitiesSelect.innerHTML =  '<option value="0">--select--</option>' +
-                                            '<option value="0">--select--</option>' +
-                                                                          '<option value="100">Sigiriya hot air balloon</option>' +
-                                                                          '<option value="150">Whale and dolphin watching</option>' +
-                                                                          '<option value="200">Sigiriya village tour</option>';
-                                            const parkId = this.value;
-                                            if (parkId) {
-                                                toggleActivitiesSelect(parkId);
-                                            }activitiesSelect.dispatchEvent(new Event('change'));
-                                        });
+                                        // // Add event listener for change event on parkSelect
+                                        // document.getElementById('parkSelect').addEventListener('change', function() {
+                                        //     const activitiesSelect = document.getElementById('Activities');
+                                        //     activitiesSelect.innerHTML =  '<option value="0">--select--</option>' +
+                                        //     '<option value="0">--select--</option>' +
+                                        //                                   '<option value="100">Sigiriya hot air balloon</option>' +
+                                        //                                   '<option value="150">Whale and dolphin watching</option>' +
+                                        //                                   '<option value="200">Sigiriya village tour</option>';
+                                        //     const parkId = this.value;
+                                        //     if (parkId) {
+                                        //         toggleActivitiesSelect(parkId);
+                                        //     }activitiesSelect.dispatchEvent(new Event('change'));
+                                        // });
 
 
 
@@ -430,7 +430,10 @@
 
 
 
-
+$(document).ready(function() {
+    // Add default option when page loads
+    $('#tourSelect').append('<option value="" default>--Select Ride time--</option>');
+});
 
 
 
