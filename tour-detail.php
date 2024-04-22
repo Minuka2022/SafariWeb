@@ -184,7 +184,7 @@
 
 
                       <div class="form-group" style="font-size: larger">
-                        <label for="adventure">Select Your National Park or Activity</label>
+                        <label for="adventure">Select Your National Park </label>
                         <p style="font-size:14px;" >(First select your  national park to unlock Ride time)</p>
                         <div class="select-holder" >
                           <select
