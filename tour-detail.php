@@ -381,6 +381,7 @@
                               document.getElementById('parkSelect').addEventListener('change', function() {
                                   const parkId = this.value;
                                   const params = new URLSearchParams(window.location.search);
+                                
                                          
                                           const tourid = params.get('tourId');
                                          
@@ -399,12 +400,14 @@
                                         
                                           // Clear existing options
                                           tourSelect.innerHTML = '<option value="0" default>--Select Ride Time--</option>';
+                                          
                                           // Populate tour select dropdown with fetched data
                                           data.forEach(tour => {
+                                            
                                               const option = document.createElement('option');
                                               option.value = tour.id;
                                               option.textContent =  tour.tour_name;
-
+                                            
                                               tourSelect.appendChild(option);
                                           });
                                            // Auto-select the option with the same value as parkId
@@ -423,6 +426,10 @@
                                           childrenInputElement.disabled = !tourid;
                                           adultsInputElement.disabled = !tourid;
                                           tourSelect.dispatchEvent(new Event('change'));
+                                           // Remove parkId and tourId from URL
+                                        params.delete('parkId');
+                                        params.delete('tourId');
+                                        history.replaceState({}, '', window.location.pathname + '?' + params.toString());
                                       })
                                       .catch(error => console.error('Error fetching tours:', error));
                                   }
