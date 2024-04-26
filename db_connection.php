@@ -3,7 +3,7 @@
 // Database configuration
 $dbHost = 'localhost'; // Change this to your MySQL hostname
 $dbUsername = 'safa_root'; // Change this to your MySQL username
-$dbPassword = 'y7@Ewx8LnFs%wHl2'; // Change this to your MySQL password
+$dbPassword = 'i2-!asjCPlO25#Pt'; // Change this to your MySQL password
 $dbName = 'park'; // Change this to your MySQL database name
 
 // Create a connection to the database
